@@ -1,2 +1,8 @@
-.test1{background:red; padding:10px;}
-.test2{border:blue 4px solid;}
+@use '../../assets/scss/01-settings' as *;
+@use '../../assets/scss/grid-system' as *;
+
+.test{
+    @include column(13, 18) {
+        @include col-size-4;
+    }
+}

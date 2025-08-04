@@ -1,0 +1,89 @@
+@use '01-settings' as *;
+@use '02-tools' as *;
+
+// GENERIC
+html{height:100%;}
+.body{background:var(--bg); color:$color-text; min-height:100%;}
+
+// LINK
+a{text-decoration:none; color:$color-link;}
+a:visited{color:$color-link-visited;}
+a:hover, a:focus{text-decoration:underline;}
+a:active{color:$color-link-active;}
+
+// TYPOGRAPHY
+.body{
+    font-family: $font-family-primary;
+    font-size: $font-size-m; 
+    line-height: $line-height-m;
+}
+
+.lato{font-family: $font-family-primary;}
+.georgia{font-family: $font-family-secondary;}
+.nunito{font-family: $font-family-tertiary;}
+
+.regular{font-weight:400;}
+strong, .bold{font-weight:bold;}
+em, .italic{font-style:italic;}
+p{margin-bottom:$space-s; max-width:$max-width;}
+
+.h1{font-size:$h1; line-height:$h1-line-height;}
+.h2{font-size:$h2; line-height:$h2-line-height;}
+.h3{font-size:$h3; line-height:$h3-line-height;}
+.h4{font-size:$h4; line-height:$h4-line-height;}
+.h5{font-size:$h5; line-height:$h5-line-height;}
+.h6{font-size:$h6; line-height:$h6-line-height;}
+
+.font-size-m{font-size: $font-size-m; line-height: $line-height-m;}
+.font-size-l{font-size: $font-size-l; line-height: $line-height-l;}
+.font-size-xl{font-size: $font-size-xl; line-height: $line-height-xl;}
+
+code{font-family: Consolas,"courier new";}
+
+// SPACING
+.spacing{margin-bottom:$space-xl;}
+
+// PADDING
+.padding-xxl{padding:$space-xxl;}
+.padding-xl{padding:$space-xl;}
+.padding-l{padding:$space-l;}
+.padding-m{padding:$space-m;}
+.padding-s{padding:$space-s;}
+.padding-xs{padding:$space-xs;}
+.padding-xxs{padding:$space-xxs;}
+
+// FORMS
+select{
+    @extend .font-size-m;
+    padding: $space-xs;
+    margin-left:$space-s;
+}
+
+.table{
+    width:100%; border:3px solid;
+    td, th{padding:$space-s;}
+}
+
+// TABLE
+:root { // light theme default
+    .table{
+        border-color:$color-black;
+        td, th{border:1px dotted $color-grey-d1;}
+        &.table--crossreference{
+                th, td:first-child{background:$color-grey-l2;
+            }
+        }
+    }
+}
+
+[data-theme="dark"] {
+    .table{
+        border-color:$color-white;
+        td, th{border-color:$color-grey-l1;}
+        &.table--crossreference{
+            th, td:first-child{
+                background:$color-grey-d3;
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+@use '02-tools' as *;
+
+// VARIABLES
+
+// --BREAKPOINTS
+$break-mobile-s:toRem(480);
+$break-mobile:toRem(576);
+$break-tablet-potrait:toRem(768);
+$break-tablet-landscape:toRem(992);
+$break-desktop:toRem(1200);
+$break-desktop-l:toRem(1440);
+$break-desktop-xl:toRem(1920);
+
+// --SPACING
+$space-xxl: toRem(48);
+$space-xl: toRem(32);
+$space-l: toRem(24);
+$space-m: toRem(16);
+$space-s: toRem(8);
+$space-xs: toRem(4);
+$space-xxs: toRem(2);
+
+// --TYPOGRAPHY
+$font-fallback-sansSerif: "helvetica, arial, sans serif"; 
+$font-fallback-serif: "times new roman, times, serif"; 
+$font-family-primary: "Lato", #{$font-fallback-sansSerif};
+$font-family-secondary: "Georgia", #{$font-fallback-serif};
+$font-family-tertiary: "Nunito", #{$font-fallback-sansSerif};
+
+$font-size-xl: toRem(32);
+$line-height-xl: toRem(36);
+
+$font-size-l: toRem(24);
+$line-height-l: toRem(28);
+
+$font-size-m: toRem(16);
+$line-height-m: toRem(20);
+
+$h1: toRem(48);
+$h1-line-height: toRem(48);
+
+$h2: toRem(32);
+$h2-line-height: toRem(32);
+
+$h3: toRem(26);
+$h3-line-height: toRem(26);
+
+$h4: toRem(20);
+$h4-line-height: toRem(20);
+
+$h5: $font-size-m;
+$h5-line-height: $font-size-m;
+
+$h6: $font-size-m;
+$h6-line-height: $line-height-m;
+
+// Wrapping content to a readable size
+$max-width:toRem(700);
+
+// --COLORS
+$color-text: var(--color-text);
+$color-link: var(--color-link);
+$color-link-visited: var(--color-link-visited);
+$color-link-active: var(--color-link-active);
+
+$color-white: var(--color-white);
+$color-grey-l3: var(--color-grey-l3);
+$color-grey-l2: var(--color-grey-l2);
+$color-grey-l1: var(--color-grey-l1);
+$color-grey: var(--color-grey);
+$color-grey-d1: var(--color-grey-d1);
+$color-grey-d2: var(--color-grey-d2);
+$color-grey-d3: var(--color-grey-d3);
+$color-black: var(--color-black);
+
+$color-primary-l2: var(--color-primary-l2);
+$color-primary-l1: var(--color-primary-l1);
+$color-primary: var(--color-primary);
+$color-primary-d1: var(--color-primary-d1);
+$color-primary-d2: var(--color-primary-d2);
+
+$color-secondary-l2: var(--color-secondary-l2);
+$color-secondary-l1: var(--color-secondary-l1);
+$color-secondary: var(--color-secondary);
+$color-secondary-d1: var(--color-secondary-d1);
+$color-secondary-d2: var(--color-secondary-d2);
+
+$color-success: var(--color-success);
+$color-warn: var(--color-warn);
+$color-fail: var(--color-fail);
+
+// --RADIUS
+$radius-m: toRem(8);

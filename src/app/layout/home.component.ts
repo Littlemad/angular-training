@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'layout-home',
+  selector: '.layout-home',
   standalone: true,
   imports: [],
   templateUrl: './home.component.html',
@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
 })
 export class LayoutHome {
 
-} 
+}

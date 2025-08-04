@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */ 
+// ITCSS: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
+
+@use "00-load-fonts.scss" as *;
+
+// Variable configurations for things like colors, fonts, sizes, etc…
+@use "01-settings.scss" as *;
+
+// Globally used mixins and functions
+@use "02-tools.scss" as *;
+
+// Keep grid CSS in one single place (media queries, mixins, classes etc..)
+@use "grid-system.scss" as *;
+
+// CSS resets and normalizing rules to create a foundation for your styles
+@use "03-generic.scss" as *;
+
+// Style rules for bare HTML elements (like h1 or button)
+@use "04-elements.scss" as *;
+
+// Load generic elements that are used in layouts
+@use "05-objects.scss" as *;
+
+// Define basic values for main layout to make it responsive
+@use "06-media-queries.scss" as *;
