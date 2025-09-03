@@ -1,6 +1,4 @@
 @use '../../../assets/scss/01-settings' as *;
 
-::host body{border:5px solid blue;}
-
 .main-nav__ul{display:flex; background:$color-grey-l2;}
 .main-nav__li{padding:$space-m;}
