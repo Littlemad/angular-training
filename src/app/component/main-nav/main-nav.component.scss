@@ -1,4 +1,5 @@
 @use '../../../assets/scss/01-settings' as *;
 
-.main-nav__ul{display:flex; background:$color-grey-l2;}
-.main-nav__li{padding:$space-m;}
+#main-nav{background:#21B7BB; margin-bottom:$space-m; font-weight:bold; color:#fff;}
+.main-nav__ul{display:flex;}
+.main-nav__link{display:block; padding:$space-m;}

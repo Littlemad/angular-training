@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { DesignSystemComponent } from './pages/design-system.component';
-import { TabletopCounterComponent } from './pages/tabletop-counter.component';
-import { AngularExperimentsComponent } from './pages/angular-experiments.component';
+import { DesignSystemComponent } from './pages/design-system/design-system.component';
+import { TabletopCounterComponent } from './pages/tabletop-counter/tabletop-counter.component';
+import { AngularExperimentsComponent } from './pages/angular-experiments/angular-experiments.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/design-system', pathMatch: 'full' },

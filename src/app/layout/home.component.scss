@@ -1,10 +1,6 @@
 @use '../../assets/scss/01-settings' as *;
-@use '../../assets/scss/grid-system' as *;
 
-.test{
-    @include column(13, 18) {
-        @include col-size-4;
-        background: red;
-        color:#f77;;
-    }
-}
+.page-content__title{font-size:$h2; font-weight:bold;}
+.page-content__ul{display:flex; gap:$space-m;}
+.page-content__li{list-style-type:disc; margin:$space-m $space-l $space-m;}
+.page-content__link{text-decoration:underline;}
