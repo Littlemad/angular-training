@@ -60,13 +60,18 @@ select{
     margin-left:$space-s;
 }
 
+.experiment{
+    border:2px solid $color-grey-d2; // $color-grey-d2; why doesn't work?
+    padding:$space-m;
+}
+
+// TABLE
 .table{
     width:100%; border:3px solid;
     td, th{padding:$space-s;}
 }
 
-// TABLE
-:root { // light theme default
+:root { 
     .table{
         border-color:$color-black;
         td, th{border:1px dotted $color-grey-d1;}
@@ -77,6 +82,7 @@ select{
     }
 }
 
+// THEME
 [data-theme="dark"] {
     .table{
         border-color:$color-white;

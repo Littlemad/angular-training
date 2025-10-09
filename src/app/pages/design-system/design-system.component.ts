@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './design-system.component.html',
   styleUrl: './design-system.component.scss',
 })
-export class DesignSystemComponent {}
+export class DesignSystemComponent {
+}

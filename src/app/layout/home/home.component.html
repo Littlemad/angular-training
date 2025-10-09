@@ -1,0 +1,18 @@
+<div class="page-content">
+    @if (isPage === "designSystem") {
+        <h1 class="page-content__title">Design system</h1>
+        <ul class="page-content__ul">
+            <li class="page-content__li"><a class="page-content__link" href="#grid-system">Grid system</a></li>
+        </ul>
+    }@else if (isPage === "angularExperiments") {
+        <h1 class="page-content__title">Angular experiments</h1>
+        <p>miao</p>
+    }@else if (isPage === "tabletopCounter") {
+        <h1 class="page-content__title">Tabletop Counter</h1>
+        <p>wow woooooow</p>
+    }
+</div>
+
+<hr class="hr">
+
+<ng-content></ng-content>
