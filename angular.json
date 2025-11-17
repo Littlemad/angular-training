@@ -20,9 +20,7 @@
             "outputPath": "dist/angular-learning",
             "index": "src/index.html",
             "browser": "src/index.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -31,9 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/assets/scss/main.scss"
-            ],
+            "styles": ["src/assets/scss/main.scss"],
             "scripts": []
           },
           "configurations": {
@@ -74,27 +70,6 @@
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/assets/scss/main.scss"
-            ],
-            "scripts": []
-          }
         }
       }
     }
