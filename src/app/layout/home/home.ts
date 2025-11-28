@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: '.layout-home',
   imports: [RouterModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './home.html',
+  styleUrl: './home.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class LayoutHome implements OnInit, OnDestroy {

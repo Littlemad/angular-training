@@ -4,8 +4,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: '#main-nav',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.scss'],
+  templateUrl: './main-nav.html',
+  styleUrls: ['./main-nav.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class MainNavComponent {

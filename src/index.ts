@@ -1,9 +1,9 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
-import { IndexComponent } from './app';
+import { HomeComponent } from './app/home';
 import { routes } from './app/app.routes';
 
-bootstrapApplication(IndexComponent, {
+bootstrapApplication(HomeComponent, {
   providers: [
     provideRouter(routes)
   ]
