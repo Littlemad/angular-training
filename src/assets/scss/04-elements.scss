@@ -14,7 +14,7 @@ a:active{color:$color-link-active;}
 // TYPOGRAPHY
 .body{
     font-family: $font-family-primary;
-    font-size: $font-size-m; 
+    font-size: $font-size-m;
     line-height: $line-height-m;
     padding: $space-l;
 }
@@ -71,13 +71,12 @@ select{
     td, th{padding:$space-s;}
 }
 
-:root { 
+:root {
     .table{
         border-color:$color-black;
-        td, th{border:1px dotted $color-grey-d1;}
+        td, th{border:1px solid $color-grey-d1;}
         &.table--crossreference{
-                th, td:first-child{background:$color-grey-l2;
-            }
+            th, td:first-child{background:$color-grey-l2;}
         }
     }
 }

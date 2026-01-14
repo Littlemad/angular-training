@@ -1,0 +1,19 @@
+<div class="page-content">
+    <h1>Tabletop</h1>
+    <p>What game, who won, what date. Sums of all the won games</p>
+
+    <h2>Games</h2>
+    <app-sortable-table
+        [columns]="gamesColumns"
+        [data]="games"></app-sortable-table>
+
+    <h2>Players</h2>
+    <app-sortable-table
+        [columns]="playersColumns"
+        [data]="players"></app-sortable-table>
+
+    <h2>Game Days</h2>
+    <app-sortable-table
+        [columns]="gameDaysColumns"
+        [data]="gameDays"></app-sortable-table>
+</div>

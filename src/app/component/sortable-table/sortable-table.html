@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+        <tr>
+            @for (col of columns; track col.key) {
+                <th class="th">
+                    @if (col.sortable !== false) {
+                        <button
+                            type="button"
+                            class="th__sort-btn"
+                            (click)="sort(col.key)">
+                            {{ col.label }}{{ getSortIndicator(col.key) }}
+                        </button>
+                    } @else {
+                        {{ col.label }}
+                    }
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (row of sortedData; track $index) {
+            <tr>
+                @for (col of columns; track col.key) {
+                    <td class="td">{{ getCellValue(row, col) }}</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

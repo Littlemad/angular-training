@@ -6,9 +6,11 @@ import { FootComponent } from './layout/foot/foot';
 import { CssVariablesService } from './services/css-variables.service';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, LayoutHome, MainNavComponent, FootComponent],
-  templateUrl: './home.html',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-root',
+    imports: [RouterOutlet, LayoutHome, MainNavComponent, FootComponent],
+    templateUrl: './home.html',
+    encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent {}
+export class HomeComponent {
+    constructor(private cssVariablesService: CssVariablesService) {}
+}

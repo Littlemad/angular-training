@@ -1,42 +1,65 @@
 {
-	"colors": [
-		{"value": "#fff", "var": "white", "name": "White"},
-		{"value": "#f5f5f5", "var": "grey-l3", "name": "Very Light Grey"},
-		{"value": "#eee", "var": "grey-l2", "name": "Light Grey"},
-		{"value": "#ddd", "var": "grey-l1", "name": "Lightish Grey"},
-		{"value": "#bbb", "var": "grey", "name": "Grey"},
-		{"value": "#999", "var": "grey-d1", "name": "Darkish Grey"},
-		{"value": "#666", "var": "grey-d2", "name": "Dark Grey"},
-		{"value": "#333", "var": "grey-d3", "name": "Very Dark Grey"},
-		{"value": "#000", "var": "black", "name": "Black"},
+    "colors": [
+        { "value": "#fff", "var": "white", "name": "White" },
+        { "value": "#f5f5f5", "var": "grey-l3", "name": "Very Light Grey" },
+        { "value": "#eee", "var": "grey-l2", "name": "Light Grey" },
+        { "value": "#ddd", "var": "grey-l1", "name": "Lightish Grey" },
+        { "value": "#bbb", "var": "grey", "name": "Grey" },
+        { "value": "#999", "var": "grey-d1", "name": "Darkish Grey" },
+        { "value": "#666", "var": "grey-d2", "name": "Dark Grey" },
+        { "value": "#333", "var": "grey-d3", "name": "Very Dark Grey" },
+        { "value": "#000", "var": "black", "name": "Black" },
 
-		{"value": "#68BBE3", "var": "primary-l2", "name": "Baby Blue"},
-		{"value": "#0E86D4", "var": "primary-l1", "name": "Blue Grotto"},
-		{"value": "#055C9D", "var": "primary", "name": "Blue"},
-		{"value": "#003060", "var": "primary-d1", "name": "Navy Blue"},
-		{"value": "#001040", "var": "primary-d2", "name": "Dark Navy Blue"},
+        { "value": "#68BBE3", "var": "primary-l2", "name": "Baby Blue" },
+        { "value": "#0E86D4", "var": "primary-l1", "name": "Blue Grotto" },
+        { "value": "#055C9D", "var": "primary", "name": "Blue" },
+        { "value": "#003060", "var": "primary-d1", "name": "Navy Blue" },
+        { "value": "#001040", "var": "primary-d2", "name": "Dark Navy Blue" },
 
-		{"value": "#FFE499", "var": "secondary-l2", "name": "Very Light Gold"},
-		{"value": "#FFD35C", "var": "secondary-l1", "name": "Light Gold"},
-		{"value": "#F8B700", "var": "secondary", "name": "Gold Yellow"},
-		{"value": "#CC9600", "var": "secondary-d1", "name": "Bronze"},
-		{"value": "#8F6900", "var": "secondary-d2", "name": "Dirty Bronze"},
+        {
+            "value": "#FFE499",
+            "var": "secondary-l2",
+            "name": "Very Light Gold"
+        },
+        { "value": "#FFD35C", "var": "secondary-l1", "name": "Light Gold" },
+        { "value": "#F8B700", "var": "secondary", "name": "Gold Yellow" },
+        { "value": "#CC9600", "var": "secondary-d1", "name": "Bronze" },
+        { "value": "#8F6900", "var": "secondary-d2", "name": "Dirty Bronze" },
 
-		{"value": "#EAE0D7", "var": "tertiary-l3", "name": "Cream"},
-		{"value": "#937C76", "var": "tertiary-l2", "name": "Beige"},
-		{"value": "#594B48", "var": "tertiary-l1", "name": "Desaturated Brown"},
-		{"value": "#2F2320", "var": "tertiary", "name": "Desaturated brown"},
-		{"value": "#2B1915", "var": "tertiary-d1", "name": "Dark Brown"},
-		{"value": "#18100C", "var": "tertiary-d2", "name": "Darkest Brown"},
+        { "value": "#EAE0D7", "var": "tertiary-l3", "name": "Cream" },
+        { "value": "#937C76", "var": "tertiary-l2", "name": "Beige" },
+        {
+            "value": "#594B48",
+            "var": "tertiary-l1",
+            "name": "Desaturated Brown"
+        },
+        { "value": "#2F2320", "var": "tertiary", "name": "Desaturated brown" },
+        { "value": "#2B1915", "var": "tertiary-d1", "name": "Dark Brown" },
+        { "value": "#18100C", "var": "tertiary-d2", "name": "Darkest Brown" },
 
-		{"value": "#390", "var": "success", "name": "Success"},
-		{"value": "#fc0", "var": "warn", "name": "Warning"},
-		{"value": "#c30", "var": "fail", "name": "Failure"}
-	],
-	"links": [
-		{"value": "#00c", "themeDark": "#F8B700", "var": "link", "name": "Link"},
-		{"value": "#00c", "themeDark": "#F8B700", "var": "link-visited", "name": "Link Visited"},
-		{"value": "#a4b", "themeDark": "#fff", "var": "link-hover", "name": "Link Hover"},
-		{"value": "#c30", "var": "link-active", "name": "Link Active"}
-	]
+        { "value": "#390", "var": "success", "name": "Success" },
+        { "value": "#fc0", "var": "warn", "name": "Warning" },
+        { "value": "#c30", "var": "fail", "name": "Failure" }
+    ],
+    "links": [
+        {
+            "value": "#00c",
+            "themeDark": "#F8B700",
+            "var": "link",
+            "name": "Link"
+        },
+        {
+            "value": "#00c",
+            "themeDark": "#F8B700",
+            "var": "link-visited",
+            "name": "Link Visited"
+        },
+        {
+            "value": "#a4b",
+            "themeDark": "#fff",
+            "var": "link-hover",
+            "name": "Link Hover"
+        },
+        { "value": "#c30", "var": "link-active", "name": "Link Active" }
+    ]
 }

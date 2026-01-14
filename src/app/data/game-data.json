@@ -1,0 +1,23 @@
+{
+    "game": [
+        { "id": 1, "name": "Bloodborne cardgame" },
+        { "id": 2, "name": "Citizen of the sparks" },
+        { "id": 3, "name": "Dune imperium" },
+        { "id": 4, "name": "Rebirth" }
+    ],
+    "players": [
+        { "id": 1, "name": "Alessio" },
+        { "id": 2, "name": "David" },
+        { "id": 3, "name": "Luka" },
+        { "id": 4, "name": "Kevin" },
+        { "id": 5, "name": "Thomas" }
+    ],
+    "gameDays": [
+        {
+            "date": "2026-01-11",
+            "gamers": [1, 2, 3, 4, 5],
+            "games": [1, 2],
+            "winner": [3, 2]
+        }
+    ]
+}

@@ -47,32 +47,30 @@ export class CssVariablesService {
   private generateCssVariables(): string {
     let css = ':root {\n';
     
-    // Generate CSS variables for colors
+    // Generate CSS variables for colors (with color- prefix to match SCSS)
     this.data.colors.forEach(color => {
-      css += `  --${color.var}: ${color.value};\n`;
+      css += `  --color-${color.var}: ${color.value};\n`;
     });
     
-    // Generate CSS variables for links
+    // Generate CSS variables for links (with color- prefix to match SCSS)
     this.data.links.forEach(link => {
-      css += `  --${link.var}: ${link.value};\n`;
+      css += `  --color-${link.var}: ${link.value};\n`;
       if (link.themeDark) {
-        css += `  --${link.var}-dark: ${link.themeDark};\n`;
+        css += `  --color-${link.var}-dark: ${link.themeDark};\n`;
       }
     });
     
     css += '}\n';
     
-    // Add dark theme variables if needed
+    // Add dark theme variables when html[darktheme] attribute is present
     const hasDarkTheme = this.data.links.some(link => link.themeDark);
     if (hasDarkTheme) {
-      css += '\n@media (prefers-color-scheme: dark) {\n';
-      css += '  :root {\n';
+      css += '\nhtml[darktheme] {\n';
       this.data.links.forEach(link => {
         if (link.themeDark) {
-          css += `    --${link.var}: ${link.themeDark};\n`;
+          css += `  --color-${link.var}: ${link.themeDark};\n`;
         }
       });
-      css += '  }\n';
       css += '}\n';
     }
     
