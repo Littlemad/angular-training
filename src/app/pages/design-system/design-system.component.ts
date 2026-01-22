@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-design-system',
+  selector: 'page-design-system',
   standalone: true,
   templateUrl: './design-system.component.html',
   styleUrl: './design-system.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
-export class DesignSystemComponent {
+export class PageDesignSystemComponent {
 }

@@ -1,5 +1,5 @@
-@use '01-settings' as *;
-@use '02-tools' as *;
+@use './01-settings' as *;
+@use './02-tools' as *;
 
 // GRID SYSTEM
 .cols{
@@ -28,7 +28,7 @@
 
 // BUTTONS
 .btn{
-    border:1px solid $color-grey; 
+    border:1px solid $color-grey;
     background:$color-white;
     padding:$space-s $space-m;
     border-radius: $radius-m;

@@ -1,0 +1,31 @@
+/* Grid mixins only (no CSS output). Safe to @use in component styles without duplicating global CSS.
+Mixin created to apply the same class value to multiple columns at the same time (useful for symmetrical declaration of columns) */
+
+@mixin column($n, $max) {
+  %mod#{$n} {
+    @content;
+  }
+  $i: $n;
+  @while $i <= $max {
+    .grid__col#{$i} {
+      @extend %mod#{$n};
+    }
+    $i: $i + 1;
+  }
+}
+
+@mixin col-size-1{grid-column:span 1;}
+@mixin col-size-2{grid-column:span 2;}
+@mixin col-size-3{grid-column:span 3;}
+@mixin col-size-4{grid-column:span 4;}
+@mixin col-size-6{grid-column:span 6;}
+@mixin col-size-8{grid-column:span 8;}
+@mixin col-size-10{grid-column:span 10;}
+@mixin col-size-12{grid-column:span 12;}
+
+@mixin row-size-1{grid-row:span 1;}
+@mixin row-size-2{grid-row:span 2;}
+@mixin row-size-3{grid-row:span 3;}
+@mixin row-size-4{grid-row:span 4;}
+@mixin row-size-5{grid-row:span 5;}
+@mixin row-size-6{grid-row:span 6;}

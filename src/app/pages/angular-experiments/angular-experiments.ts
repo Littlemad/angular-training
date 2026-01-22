@@ -4,10 +4,10 @@ import { CssTestComponent } from '../css-test/css-test.component';
 import { CssDebugComponent } from '../css-debug/css-debug.component';
 
 @Component({
-    selector: 'app-angular-experiments',
+    selector: 'page-angular-experiments',
     standalone: true,
     imports: [ContentProjectionComponent, CssTestComponent, CssDebugComponent],
     templateUrl: './angular-experiments.html',
     encapsulation: ViewEncapsulation.None,
 })
-export class AngularExperimentsComponent {}
+export class PageAngularExperimentsComponent {}

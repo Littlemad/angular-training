@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
-import { DesignSystemComponent } from './pages/design-system/design-system.component';
-import { TabletopCounterComponent } from './pages/tabletop-counter/tabletop-counter';
-import { AngularExperimentsComponent } from './pages/angular-experiments/angular-experiments';
+import { PageMainLandingComponent } from './pages/main-landing/main-landing';
+import { PageDesignSystemComponent } from './pages/design-system/design-system.component';
+import { PageTabletopCounterComponent } from './pages/tabletop-counter/tabletop-counter';
+import { PageAngularExperimentsComponent } from './pages/angular-experiments/angular-experiments';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/design-system', pathMatch: 'full' },
-  { path: 'design-system', component: DesignSystemComponent },
-  { path: 'tabletop-counter', component: TabletopCounterComponent },
-  { path: 'angular-experiments', component: AngularExperimentsComponent },
-  { path: '**', redirectTo: '/design-system' }, // Wildcard route for 404s
+  { path: '', redirectTo: '/main-landing', pathMatch: 'full' },
+  { path: 'main-landing', component: PageMainLandingComponent },
+  { path: 'design-system', component: PageDesignSystemComponent },
+  { path: 'tabletop-counter', component: PageTabletopCounterComponent },
+  { path: 'angular-experiments', component: PageAngularExperimentsComponent },
+  { path: '**', redirectTo: '/main-landing' }, // Wildcard route for 404s
 ];

@@ -1,4 +1,4 @@
-@use '02-tools' as *;
+@use './02-tools' as *;
 
 // RESET
 // http://meyerweb.com/eric/tools/css/reset/ - v2.0 | 20110126
@@ -36,6 +36,7 @@ html{box-sizing: border-box;}
     --color-text: var(--color-lightTheme-text);
     --color-link: var(--color-lightTheme-link);
     --color-link-visited: var(--color-lightTheme-link-visited);
+
 }
 
 [data-theme="dark"] {

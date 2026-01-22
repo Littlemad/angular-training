@@ -8,9 +8,6 @@
 // Globally used mixins and functions
 @use "02-tools.scss" as *;
 
-// Keep grid CSS in one single place (media queries, mixins, classes etc..)
-@use "grid-system.scss" as *;
-
 // CSS resets and normalizing rules to create a foundation for your styles
 @use "03-generic.scss" as *;
 
@@ -22,3 +19,6 @@
 
 // Define basic values for main layout to make it responsive
 @use "06-media-queries.scss" as *;
+
+// Grid system
+@use "grid/grid-system.scss" as *;

@@ -1,5 +1,4 @@
-@use '01-settings' as *;
-
+@use './01-settings' as *;
 
 // MIN WIDTH
 @media only screen and (min-width: $break-mobile-s){ // 480px
@@ -32,17 +31,17 @@
 }
 
 /* TABLE MEDIA QUERIES for mobile & tablet */
-@media 
+@media
 only screen and (max-width: $break-mobile),
 (min-device-width: $break-mobile) and (max-device-width: $break-tablet-potrait)  {
 
     :root .table{
         // Force table to not be like tables anymore
-        display:block; 
+        display:block;
         thead, tbody, th, td, tr{display:block;}
-        
+
         // Hide table headers for accessibility
-        thead tr { 
+        thead tr {
             position: absolute;
             top: -999px;
             left: -999px;

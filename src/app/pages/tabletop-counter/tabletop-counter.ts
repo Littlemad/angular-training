@@ -6,14 +6,14 @@ import {
 } from '../../component/sortable-table/sortable-table';
 
 @Component({
-  selector: 'app-tabletop-counter',
+  selector: 'page-tabletop-counter',
   standalone: true,
   imports: [SortableTableComponent],
   templateUrl: './tabletop-counter.html',
   styleUrl: './tabletop-counter.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class TabletopCounterComponent {
+export class PageTabletopCounterComponent {
   games = gameData.game;
   players = gameData.players;
   gameDays = gameData.gameDays;

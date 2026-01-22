@@ -1,14 +1,14 @@
-@use '../../../assets/scss/grid-system' as *;
-
+@use '../../../assets/scss/01-settings' as *;
+@use '../../../assets/scss/grid/grid-mixins' as *;
 
 .grid-system__example{
     @include column(1, 28) {
         @include col-size-2;
-        background: #ddd;
+        background: $color-white;
     }
     @include column(13, 18) {
         @include col-size-4;
-        background: red;
-        color:#fff;
+        background: $color-primary;
+        color: $color-white;
     }
 }
