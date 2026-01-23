@@ -6,11 +6,11 @@ import {
 } from '../../component/sortable-table/sortable-table';
 
 @Component({
-  selector: 'page-tabletop-counter',
+  selector: 'section[pageTabletopCounter]',
   standalone: true,
   imports: [SortableTableComponent],
-  templateUrl: './tabletop-counter.html',
-  styleUrl: './tabletop-counter.scss',
+  templateUrl: './tabletop-counter.page.html',
+  styleUrl: './tabletop-counter.page.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class PageTabletopCounterComponent {
@@ -77,3 +77,4 @@ export class PageTabletopCounterComponent {
       .join(', ');
   }
 }
+

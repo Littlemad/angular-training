@@ -21,8 +21,8 @@ $space-xs: toRem(4);
 $space-xxs: toRem(2);
 
 // --TYPOGRAPHY
-$font-fallback-sansSerif: "helvetica, arial, sans serif"; 
-$font-fallback-serif: "times new roman, times, serif"; 
+$font-fallback-sansSerif: "helvetica, arial, sans serif";
+$font-fallback-serif: "times new roman, times, serif";
 $font-family-primary: "Lato", #{$font-fallback-sansSerif};
 $font-family-secondary: "Georgia", #{$font-fallback-serif};
 $font-family-tertiary: "Nunito", #{$font-fallback-sansSerif};
@@ -32,6 +32,12 @@ $line-height-xl: toRem(36);
 
 $font-size-l: toRem(24);
 $line-height-l: toRem(28);
+
+$font-size-l-s1: toRem(22);
+$line-height-l-s1: toRem(26);
+
+$font-size-m-b1: toRem(18);
+$line-height-m-b1: toRem(22);
 
 $font-size-m: toRem(16);
 $line-height-m: toRem(20);

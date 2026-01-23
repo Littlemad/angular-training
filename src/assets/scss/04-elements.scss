@@ -1,9 +1,16 @@
 @use './01-settings' as *;
 @use './02-tools' as *;
 
+// PLACEHOLDERS
+%link-style{
+    a{text-decoration:underline;}
+    a:hover, a:focus{text-decoration:none;}
+}
+
 // GENERIC
 html{height:100%;}
 .body{background:var(--bg); color:$color-text; min-height:100%;}
+.page{margin:auto; display:flex; justify-content:center;}
 
 // LINK
 a{text-decoration:none; color:$color-link;}
@@ -16,7 +23,6 @@ a:active{color:$color-link-active;}
     font-family: $font-family-primary;
     font-size: $font-size-m;
     line-height: $line-height-m;
-    padding: $space-l;
 }
 
 .lato{font-family: $font-family-primary;}
@@ -26,7 +32,9 @@ a:active{color:$color-link-active;}
 .regular{font-weight:400;}
 strong, .bold{font-weight:bold;}
 em, .italic{font-style:italic;}
-p{margin-bottom:$space-s; max-width:$max-width;}
+
+.list{@extend %link-style;}
+p{@extend %link-style; margin-bottom:$space-s; max-width:$max-width;}
 
 .h1{font-size:$h1; line-height:$h1-line-height;}
 .h2{font-size:$h2; line-height:$h2-line-height;}
@@ -34,6 +42,9 @@ p{margin-bottom:$space-s; max-width:$max-width;}
 .h4{font-size:$h4; line-height:$h4-line-height;}
 .h5{font-size:$h5; line-height:$h5-line-height;}
 .h6{font-size:$h6; line-height:$h6-line-height;}
+
+.h1--margin, .h2--margin{margin-bottom:$space-l;}
+.h3--margin, .h4--margin, .h5--margin, .h6--margin{margin-bottom:$space-m;}
 
 .font-size-m{font-size: $font-size-m; line-height: $line-height-m;}
 .font-size-l{font-size: $font-size-l; line-height: $line-height-l;}
@@ -64,6 +75,9 @@ select{
     border:2px solid $color-grey-d2; // $color-grey-d2; why doesn't work?
     padding:$space-m;
 }
+
+// PAGE BREAK
+.hr{margin:$space-xl 0;}
 
 // TABLE
 .table{

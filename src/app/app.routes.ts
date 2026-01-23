@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { PageMainLandingComponent } from './pages/main-landing/main-landing';
-import { PageDesignSystemComponent } from './pages/design-system/design-system.component';
-import { PageTabletopCounterComponent } from './pages/tabletop-counter/tabletop-counter';
-import { PageAngularExperimentsComponent } from './pages/angular-experiments/angular-experiments';
+import { PageMainLandingComponent } from './page/main-landing/main-landing.page';
+import { PageDesignSystemComponent } from './page/design-system/design-system.page';
+import { PageTabletopCounterComponent } from './page/tabletop-counter/tabletop-counter.page';
+import { PageAngularExperimentsComponent } from './page/angular-experiments/angular-experiments.page';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main-landing', pathMatch: 'full' },

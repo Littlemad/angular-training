@@ -1,5 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  ActivatedRoute,
+  IsActiveMatchOptions,
+  NavigationEnd,
+  Params,
+  Router,
+  UrlTree,
+} from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -7,120 +16,93 @@ import { filter, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class RouterService {
-  private currentRouteSubject = new BehaviorSubject<string>('');
-  public currentRoute$ = this.currentRouteSubject.asObservable();
+  private readonly currentRouteSubject = new BehaviorSubject<string>('');
+  readonly currentRoute$ = this.currentRouteSubject.asObservable();
+
+  private readonly isDesignSystemSubject = new BehaviorSubject<boolean>(false);
+  readonly isDesignSystem$ = this.isDesignSystemSubject.asObservable();
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location,
+    private destroyRef: DestroyRef
   ) {
     this.initializeRouteTracking();
   }
 
-  /**
-   * Initialize route tracking and state management
-   */
   private initializeRouteTracking(): void {
+    this.updateFromUrl(this.router.url);
+
     // Listen to route changes
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
-        map((event: NavigationEnd) => event.url)
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        map((event) => event.urlAfterRedirects),
+        takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe(url => {
-        this.currentRouteSubject.next(url);
-        this.isDesignSystemSubject.next(url.includes('/design-system'));
-      });
-
-    // Set initial values
-    const currentUrl = this.router.url;
-    this.currentRouteSubject.next(currentUrl);
-    this.isDesignSystemSubject.next(currentUrl.includes('/design-system'));
+      .subscribe((url) => this.updateFromUrl(url));
   }
 
-  /**
-   * Navigate to a specific route
-   */
-  navigateTo(route: string | string[], queryParams?: any): Promise<boolean> {
+  private updateFromUrl(url: string): void {
+    this.currentRouteSubject.next(url);
+    this.isDesignSystemSubject.next(url.includes('/design-system'));
+  }
+
+  navigateTo(route: string | string[], queryParams?: Params): Promise<boolean> {
     return this.router.navigate(Array.isArray(route) ? route : [route], {
       queryParams
     });
   }
 
-  /**
-   * Navigate to design system page
-   */
   navigateToDesignSystem(): Promise<boolean> {
     return this.navigateTo('/design-system');
   }
 
-  /**
-   * Navigate to tabletop counter page
-   */
   navigateToTabletopCounter(): Promise<boolean> {
     return this.navigateTo('/tabletop-counter');
   }
 
-  /**
-   * Navigate to angular experiments page
-   */
   navigateToAngularExperiments(): Promise<boolean> {
     return this.navigateTo('/angular-experiments');
   }
 
-  /**
-   * Navigate back in browser history
-   */
   goBack(): void {
-    window.history.back();
+    this.location.back();
   }
 
-  /**
-   * Navigate forward in browser history
-   */
   goForward(): void {
-    window.history.forward();
+    this.location.forward();
   }
 
-  /**
-   * Get current route as string
-   */
   getCurrentRoute(): string {
     return this.currentRouteSubject.value;
   }
 
-  /**
-   * Check if currently on design system route
-   */
   isOnDesignSystemRoute(): boolean {
     return this.isDesignSystemSubject.value;
   }
 
-  /**
-   * Get route parameters as observable
-   */
-  getRouteParams(): Observable<any> {
+  getRouteParams(): Observable<Params> {
     return this.activatedRoute.params;
   }
 
-  /**
-   * Get query parameters as observable
-   */
-  getQueryParams(): Observable<any> {
+  getQueryParams(): Observable<Params> {
     return this.activatedRoute.queryParams;
   }
 
-  /**
-   * Check if a specific route is active
-   */
-  isRouteActive(route: string): boolean {
-    return this.router.isActive(route, false);
+  isRouteActive(route: string | UrlTree): boolean {
+    // equivalent to the deprecated `isActive(url, false)`
+    const matchOptions: IsActiveMatchOptions = {
+      paths: 'subset',
+      queryParams: 'subset',
+      fragment: 'ignored',
+      matrixParams: 'ignored',
+    };
+    return this.router.isActive(route, matchOptions);
   }
 
-  /**
-   * Get route data
-   */
-  getRouteData(): Observable<any> {
-    return this.activatedRoute.data;
+  getRouteData(): Observable<Record<string, unknown>> {
+    return this.activatedRoute.data as Observable<Record<string, unknown>>;
   }
 }

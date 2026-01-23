@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MainNavComponent } from './layout/main-nav/main-nav';
-import { FootComponent } from './layout/foot/foot';
+import { MainNavComponent } from './component/main-nav/main-nav';
+import { FootComponent } from './component/main-foot/main-foot';
 import { CssVariablesService } from './services/css-variables.service';
 
 @Component({
-    selector: 'app-root',
+    selector: '[appRoot]',
     imports: [RouterOutlet, MainNavComponent, FootComponent],
     templateUrl: './home.html',
     encapsulation: ViewEncapsulation.None,

@@ -11,18 +11,10 @@
 .list{margin-left:$space-l; max-width:$max-width;}
 .list__li{list-style-type:disc; margin-bottom:$space-s;}
 
-// TITLE
-.title--margin{margin-bottom:$space-s;}
-
 // CONTAINERS
 .box{
     border:1px solid $color-grey-l1;
     padding:$space-m;
-    margin-bottom:$space-m;
-}
-
-.box__title{
-    color:$color-success;
     margin-bottom:$space-m;
 }
 

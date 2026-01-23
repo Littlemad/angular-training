@@ -18,9 +18,13 @@ Mixin created to apply the same class value to multiple columns at the same time
 @mixin col-size-2{grid-column:span 2;}
 @mixin col-size-3{grid-column:span 3;}
 @mixin col-size-4{grid-column:span 4;}
+@mixin col-size-5{grid-column:span 5;}
 @mixin col-size-6{grid-column:span 6;}
+@mixin col-size-7{grid-column:span 7;}
 @mixin col-size-8{grid-column:span 8;}
+@mixin col-size-9{grid-column:span 9;}
 @mixin col-size-10{grid-column:span 10;}
+@mixin col-size-11{grid-column:span 11;}
 @mixin col-size-12{grid-column:span 12;}
 
 @mixin row-size-1{grid-row:span 1;}

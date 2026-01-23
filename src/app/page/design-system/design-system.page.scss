@@ -1,0 +1,51 @@
+@use '../../../assets/scss/01-settings' as *;
+@use '../../../assets/scss/grid/grid-mixins' as *;
+@use '../../../assets/scss/grid/grid-system' as *;
+
+.grid-system{padding:$space-xl;}
+.grid-system--01{
+    @include column(1, 28) {
+        @include col-size-2;
+        background: $color-white;
+    }
+    @include column(13, 18) {
+        @include col-size-4;
+        background: $color-primary;
+        color: $color-white;
+    }
+}
+
+.grid-system--02{
+    @include column(1, 12) {
+        background: $color-white;
+    }
+
+    .col1{
+        border:2px solid red!important;
+        background: $color-grey-d2;
+        @include col-size-1;
+    }
+    .col2{
+        @include col-size-2;
+    }
+    .col3{
+        @include col-size-3;
+    }/*
+    .col4{
+        @include col-size-4;
+    }
+    .col5{
+        @include col-size-5;
+    }
+    .col6{
+        @include col-size-6;
+    }
+    .col7{
+        @include col-size-7;
+    }
+    .col8{
+        @include col-size-8;
+    }
+    */
+}
+
