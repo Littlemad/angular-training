@@ -1,0 +1,9 @@
+@use '../../assets/scss/01-settings' as *;
+
+// LINKS
+.go-top{
+    text-align:right;
+    margin-top:$space-m;
+    .lnk{text-decoration:underline;}
+    .lnk:hover, .lnk:focus{text-decoration:none;}
+}

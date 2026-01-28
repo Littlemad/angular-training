@@ -1,21 +1,25 @@
-
 <div class="page">
     <div class="container">
         <h1 class="h1 h1--margin">Design System</h1>
-        <p>Welcome to my personal sandbox for all things Angular. I use this space to document coding patterns, test out experimental ideas, and build a library of tools and components that I can reference in my future projects.</p>
-        <p>I try to structure the code in a way that follows few code methodologies and some personal preferences:</p>
+        <p>Layout and components tools to help designing web page interactions</p>
         <ul class="list">
-            <li class="list__li">Following <a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a> principles</li>
-            <li class="list__li">Using modern naming convention for angular files without the definition of the "-component-" suffix (and isntead identify the component by their use dividing pages, component and services to be trackable by namefiles)</li>
-            <li class="list__li">Learning about architecture and organizing to better maintainibility</li>
-            <li class="list__li">Architecturally for SASS, I am using the <a href="https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528">ITCSS methodology</a></li>
-            <li class="list__li">Defining class names approaching <a href="https://getbem.com/">BEM</a></li>
+            <li class="list__li">
+                Grid system
+                <ul class="list">
+                    <li class="list__li"><a href="#grid-system-01">The basic grid system</a> </li>
+                    <li class="list__li"><a href="#grid-system-02">Variations on columns layout</a></li>    
+                    <li class="list__li"><a href="#grid-system-03">Asymmetric grids and offsets</a></li>
+                    <li class="list__li"><a href="#grid-system-04">Using RTL on a grid</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
 <div class="grid-system">
-    <h2 id="grid-system" class="h2 h2--margin">Grid System 01</h2>
-    <div class="grid-system--01 grid grid--gap-m grid--col-pad-s">
+    <h2 id="grid-system-01" class="h2">The basic grid system</h2>
+    <p>The system is being developed to help generate a layout with advance use of SASS mixin to facilitate layout creation of all kind of complex layouts.</p>
+    <p>All divs are inside a grid of columns based on a grid of 12 column system to help divide content in a structured way.</p>
+    <div class="grid-system--base grid-system--01 grid grid--gap-m grid--col-pad-s">
         <div class="grid__col grid__col1">Col1</div>
         <div class="grid__col grid__col2">Col2</div>
         <div class="grid__col grid__col3">Col3</div>
@@ -50,9 +54,30 @@
 
         <div class="grid__col grid__col28">Col28</div>
     </div>
-    <hr class="hr" />
-    <h2 id="grid-system-02" class="h2 h2--margin">Grid System 02</h2>
-    <div class="grid-system--02 grid grid--gap-m grid--col-pad-s">
+    <div class="go-top"></div>
+
+    <h2 id="grid-system-02" class="h2 h2--margin">Variations of columns</h2>
+    <p>We have all sizes already precalibrated in sass mixins</p>
+    <div class="grid-system--base grid-system--02 grid grid--gap-m grid--col-pad-s">
+        <div class="grid__col grid__col1">1/12</div>
+        <div class="grid__col grid__col2">11/12</div>
+        <div class="grid__col grid__col3">2/12</div>
+        <div class="grid__col grid__col4">10/12</div>
+        <div class="grid__col grid__col5">3/12</div>
+        <div class="grid__col grid__col6">9/12</div>
+        <div class="grid__col grid__col7">4/12</div>
+        <div class="grid__col grid__col8">8/12</div>
+        <div class="grid__col grid__col9">5/12</div>
+        <div class="grid__col grid__col10">7/12</div>
+        <div class="grid__col grid__col11">6/12</div>
+        <div class="grid__col grid__col12">6/12</div>
+        <div class="grid__col grid__col13">12/12</div>
+    </div>
+    <div class="go-top"></div>
+
+    <h2 id="grid-system-03" class="h2 h2--margin">Asymmetric grids and offsets</h2>
+    <p>Offset are created by manually controlling the positioning of each column, creating illusions of gaps by just defining a structure that still is based on the 12 column system but that looks not symmetric.</p>
+    <div class="grid-system--base grid-system--03 grid grid--gap-m grid--col-pad-s">
         <div class="grid__col grid__col1">Col1</div>
         <div class="grid__col grid__col2">Col2</div>
         <div class="grid__col grid__col3">Col3</div>
@@ -65,6 +90,36 @@
         <div class="grid__col grid__col10">Col10</div>
         <div class="grid__col grid__col11">Col11</div>
         <div class="grid__col grid__col12">Col12</div>
+        <div class="grid__col grid__col13">Col13</div>
+        <div class="grid__col grid__col14">Col14</div>
+        <div class="grid__col grid__col15">Col15</div>
+        <div class="grid__col grid__col16">Col16</div>
+        <div class="grid__col grid__col17">Col17</div>
+        <div class="grid__col grid__col18">Col18</div>
     </div>
-</div>
+    <div class="go-top"></div>
 
+    <h2 id="grid-system-04" class="h2 h2--margin">Using RTL on a grid</h2>
+    <p>To make a grid RTL, no extra special code is needed, RTL happen naturally if you insert the property dir="rtl". Here the example using the same code as previous Asymmetric grid.</p>
+    <div dir="rtl"class="grid-system--base grid-system--03 grid grid--gap-m grid--col-pad-s">
+        <div class="grid__col grid__col1">Col1 text</div>
+        <div class="grid__col grid__col2">Col2</div>
+        <div class="grid__col grid__col3">Col3</div>
+        <div class="grid__col grid__col4">Col4</div>
+        <div class="grid__col grid__col5">Col5</div>
+        <div class="grid__col grid__col6">Col6</div>
+        <div class="grid__col grid__col7">Col7</div>
+        <div class="grid__col grid__col8">Col8</div>
+        <div class="grid__col grid__col9">Col9</div>
+        <div class="grid__col grid__col10">Col10</div>
+        <div class="grid__col grid__col11">Col11</div>
+        <div class="grid__col grid__col12">Col12</div>
+        <div class="grid__col grid__col13">Col13</div>
+        <div class="grid__col grid__col14">Col14</div>
+        <div class="grid__col grid__col15">Col15</div>
+        <div class="grid__col grid__col16">Col16</div>
+        <div class="grid__col grid__col17">Col17</div>
+        <div class="grid__col grid__col18">Col18</div>
+    </div>
+    <div class="go-top"></div>
+</div>

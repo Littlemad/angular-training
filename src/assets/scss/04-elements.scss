@@ -43,9 +43,6 @@ p{@extend %link-style; margin-bottom:$space-s; max-width:$max-width;}
 .h5{font-size:$h5; line-height:$h5-line-height;}
 .h6{font-size:$h6; line-height:$h6-line-height;}
 
-.h1--margin, .h2--margin{margin-bottom:$space-l;}
-.h3--margin, .h4--margin, .h5--margin, .h6--margin{margin-bottom:$space-m;}
-
 .font-size-m{font-size: $font-size-m; line-height: $line-height-m;}
 .font-size-l{font-size: $font-size-l; line-height: $line-height-l;}
 .font-size-xl{font-size: $font-size-xl; line-height: $line-height-xl;}

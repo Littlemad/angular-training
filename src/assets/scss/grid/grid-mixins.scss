@@ -1,6 +1,6 @@
-/* Grid mixins only (no CSS output). Safe to @use in component styles without duplicating global CSS.
-Mixin created to apply the same class value to multiple columns at the same time (useful for symmetrical declaration of columns) */
+/* Grid mixins only (no CSS output). Safe to @use in component styles without duplicating global CSS.*/
 
+/* Apply the same class value to multiple columns at the same time (useful for symmetrical declaration of columns) */
 @mixin column($n, $max) {
   %mod#{$n} {
     @content;
@@ -11,6 +11,17 @@ Mixin created to apply the same class value to multiple columns at the same time
       @extend %mod#{$n};
     }
     $i: $i + 1;
+  }
+}
+
+/*  Apply a to specific column a start and end line of the column of a grid system
+    optional parameter to apply a row span to the column */
+@mixin grid-offset($target_column, $start_line, $end_line, $grid_row: null){
+  .grid__col#{$target_column}{
+    grid-column: span #{$start_line} / #{$end_line};
+    @if $grid_row != null {
+      grid-row: span #{$grid_row};
+    }
   }
 }
 

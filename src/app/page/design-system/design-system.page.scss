@@ -2,50 +2,83 @@
 @use '../../../assets/scss/grid/grid-mixins' as *;
 @use '../../../assets/scss/grid/grid-system' as *;
 
-.grid-system{padding:$space-xl;}
+
+.grid-system{
+    padding:$space-xl;
+    .h2{margin-bottom:$space-m;}
+}
+.grid-system--base{
+    margin-top:$space-m;
+    .grid__col{background: $color-white;}
+}
+
+%primary-color{background: $color-primary; color: $color-white;}
+%secondary-color{background: $color-secondary;}
+
 .grid-system--01{
     @include column(1, 28) {
         @include col-size-2;
-        background: $color-white;
     }
-    @include column(13, 18) {
+    @include column(7, 9) {
         @include col-size-4;
-        background: $color-primary;
-        color: $color-white;
+        @extend %primary-color;
+    }
+    @include column(10, 11) {
+        @include col-size-6;
+    }
+    .grid__col13, .grid__col15{
+        @include col-size-4;
+        @extend %primary-color;
+    }
+
+    .grid__col16{
+        @include col-size-6;
+        @extend %primary-color;
+    }
+    .grid__col22{
+        @include col-size-8;
+        @extend %primary-color;
     }
 }
 
 .grid-system--02{
-    @include column(1, 12) {
-        background: $color-white;
-    }
+    .grid__col:nth-child(even){ @extend %secondary-color;}
 
-    .col1{
-        border:2px solid red!important;
-        background: $color-grey-d2;
-        @include col-size-1;
+    .grid__{
+        &col1{@include col-size-1;}
+        &col2{@include col-size-11;}
+        &col3{@include col-size-2;}
+        &col4{@include col-size-10;}
+        &col5{@include col-size-3;}
+        &col6{@include col-size-9;}
+        &col7{@include col-size-4;}
+        &col8{@include col-size-8;}
+        &col9{@include col-size-5;}
+        &col10{@include col-size-7;}
+        &col11, &col12{@include col-size-6;}
+        &col13{@include col-size-12;}
     }
-    .col2{
+}
+
+.grid-system--03{
+    .grid__col:nth-child(even){@extend %primary-color;}
+    @include grid-offset(1, 2, 3); // grid-column: span4 / 7;
+    @include grid-offset(2, 6, 13); // grid-column: span 6 / 13;
+    @include grid-offset(3, 4, 7); // grid-column: span 4 / 7;
+    @include grid-offset(4, 4, 13); // grid-column: span 10 / 12;
+    @include grid-offset(5, 4, 5); // grid-column: span 4 / 5;
+    @include grid-offset(6, 4, 11); // grid-column: span 4 / 11;
+    @include grid-offset(7, 3, 7); // grid-column: span 3 / 7;
+    @include grid-offset(8, 3, 10); // grid-column: span 3 / 10;
+    @include grid-offset(9, 10, 13); // grid-column: span 10 / 13;
+    @include grid-offset(10, 6, 7, 2); // grid-column: span 6 / 7; grid-row: span 2;
+    @include grid-offset(11, 6, 11); // grid-column: span 6 / 11;
+    @include grid-offset(12, 6, 12); // grid-column: span 6 / 12;
+    @include grid-offset(13, 8, 11); // grid-column: span 8 / 11;
+    @include grid-offset(14, 6, 11); // grid-column: span 6 / 11;
+    @include grid-offset(15, 4, 6); // grid-column: span 4 / 6;
+    @include column(16, 18) {
         @include col-size-2;
     }
-    .col3{
-        @include col-size-3;
-    }/*
-    .col4{
-        @include col-size-4;
-    }
-    .col5{
-        @include col-size-5;
-    }
-    .col6{
-        @include col-size-6;
-    }
-    .col7{
-        @include col-size-7;
-    }
-    .col8{
-        @include col-size-8;
-    }
-    */
 }
 

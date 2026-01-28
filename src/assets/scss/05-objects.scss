@@ -8,7 +8,10 @@
 }
 
 // LISTS
-.list{margin-left:$space-l; max-width:$max-width;}
+.list{
+    margin-left:$space-l; max-width:$max-width;
+    .list{margin:$space-s 0 0 $space-l;}
+}
 .list__li{list-style-type:disc; margin-bottom:$space-s;}
 
 // CONTAINERS
@@ -16,6 +19,15 @@
     border:1px solid $color-grey-l1;
     padding:$space-m;
     margin-bottom:$space-m;
+}
+.container{
+    width:100%;
+
+    .h1 + p:first-of-type{
+        font-size:$font-size-l-s1;
+        line-height:$line-height-l-s1;
+        margin:$space-m 0;
+    }
 }
 
 // BUTTONS

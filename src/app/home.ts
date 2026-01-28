@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { MainNavComponent } from './component/main-nav/main-nav';
 import { FootComponent } from './component/main-foot/main-foot';
 import { CssVariablesService } from './services/css-variables.service';
+import { RouterService } from './services/router.service';
 
 @Component({
     selector: '[appRoot]',
@@ -11,5 +12,8 @@ import { CssVariablesService } from './services/css-variables.service';
     encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
-    constructor(private cssVariablesService: CssVariablesService) {}
+    constructor(
+        private cssVariablesService: CssVariablesService,
+        private routerService: RouterService
+    ) {}
 }

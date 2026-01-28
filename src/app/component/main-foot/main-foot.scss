@@ -1,3 +1,9 @@
 @use '../../../assets/scss/01-settings' as *;
 
-#main-foot{background:$color-grey-d1;}
+#main-foot{
+    padding:$space-m; 
+    background:$color-white; 
+    font-size:$font-size-s;
+    text-align:right;
+    color:$color-grey-d2;
+}

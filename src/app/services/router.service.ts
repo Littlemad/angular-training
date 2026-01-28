@@ -1,5 +1,5 @@
-import { Location } from '@angular/common';
-import { DestroyRef, Injectable } from '@angular/core';
+import { DOCUMENT, Location } from '@angular/common';
+import { DestroyRef, Inject, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   ActivatedRoute,
@@ -9,7 +9,7 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, fromEvent } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 @Injectable({
@@ -26,9 +26,11 @@ export class RouterService {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private location: Location,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.initializeRouteTracking();
+    this.initializeAnchorScrolling();
   }
 
   private initializeRouteTracking(): void {
@@ -104,5 +106,26 @@ export class RouterService {
 
   getRouteData(): Observable<Record<string, unknown>> {
     return this.activatedRoute.data as Observable<Record<string, unknown>>;
+  }
+
+  private initializeAnchorScrolling(): void {
+    fromEvent<MouseEvent>(this.document, 'click')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((event) => this.handleAnchorClick(event));
+  }
+
+  private handleAnchorClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const anchor = target.closest('a');
+
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+
+    if (href?.startsWith('#')) {
+      event.preventDefault();
+      const fragment = href.substring(1);
+      this.router.navigate([], { fragment, replaceUrl: true });
+    }
   }
 }
