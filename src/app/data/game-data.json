@@ -1,5 +1,5 @@
 {
-    "game": [
+    "games": [
         { "id": 1, "name": "Bloodborne cardgame" },
         { "id": 2, "name": "Citizen of the sparks" },
         { "id": 3, "name": "Dune imperium" },
@@ -12,12 +12,15 @@
         { "id": 4, "name": "Kevin" },
         { "id": 5, "name": "Thomas" }
     ],
+    "dates": [
+        { "id": 1, "date": "2026-01-11" },
+        { "id": 2, "date": "2026-01-12" },
+        { "id": 3, "date": "2026-01-13" },
+        { "id": 4, "date": "2026-01-14" },
+        { "id": 5, "date": "2026-01-15" }
+    ],
     "gameDays": [
-        {
-            "date": "2026-01-11",
-            "gamers": [1, 2, 3, 4, 5],
-            "games": [1, 2],
-            "winner": [3, 2]
-        }
+        { "id": 1, "dates": [1], "gamers": [1, 2, 3, 5], "games": [1, 2], "winner": [3, 2] },
+        { "id": 2, "dates": [2], "gamers": [2, 4, 5], "games": [3], "winner": [5] }
     ]
 }

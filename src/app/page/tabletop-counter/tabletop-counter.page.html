@@ -1,20 +1,25 @@
-<div class="page-content">
-    <h1>Tabletop</h1>
-    <p>What game, who won, what date. Sums of all the won games</p>
+<div class="page">
+    <div class="container">
+        <h1 class="h1 h1--margin">Tabletop</h1>
+        <p>A simple app to count games</p>
 
-    <h2>Games</h2>
-    <app-sortable-table
-        [columns]="gamesColumns"
-        [data]="games"></app-sortable-table>
+        <h2>Title</h2>
+    
+        @for (arr of games; track arr) {
+            <p>{{ arr.name }}</p>
+        }
+        <hr class="hr">
 
-    <h2>Players</h2>
-    <app-sortable-table
-        [columns]="playersColumns"
-        [data]="players"></app-sortable-table>
+        @for (arr of gameDays; track arr) {
+            <p>{{ arr.games }}</p>
+        }
+        <br>
+        <br>
 
-    <h2>Game Days</h2>
-    <app-sortable-table
-        [columns]="gameDaysColumns"
-        [data]="gameDays"></app-sortable-table>
+        <button (click)="clickPrevEvent()">Prev Event</button>
+        <br>
+        <p>Dates: {{ currentDate() }} </p>
+        <br>
+        <button (click)="clickNextEvent()">Next Event</button>
+    </div>
 </div>
-
