@@ -1,0 +1,29 @@
+<div class="tabpanel">
+    <ul class="tabpanel__nav" role="tablist">
+        @for (title of tabTitles; track $index) {
+            <li class="tabpanel__nav__li" role="presentation">
+                <button
+                    type="button"
+                    role="tab"
+                    class="tabpanel__nav__btn"
+                    [class.tabpanel__nav__btn--active]="$index === activeTabIndex()"
+                    [attr.aria-selected]="$index === activeTabIndex()"
+                    [attr.aria-controls]="'panel-' + uniqueId + '-' + $index"
+                    (click)="setActiveTab($index)">
+                    <ng-container [ngTemplateOutlet]="title"></ng-container>
+                </button>
+            </li>
+        }
+    </ul>
+    <div class="tabpanel__body">
+        @for (content of tabContents; track $index) {
+            <div
+                role="tabpanel"
+                class="tabpanel__content"
+                [class.tabpanel__content--active]="$index === activeTabIndex()"
+                [id]="'panel-' + uniqueId + '-' + $index">
+                    <ng-container [ngTemplateOutlet]="content"></ng-container>
+            </div>
+        }
+    </div>
+</div>

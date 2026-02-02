@@ -68,18 +68,24 @@ select{
     margin-left:$space-s;
 }
 
-.experiment{
-    border:2px solid $color-grey-d2; // $color-grey-d2; why doesn't work?
-    padding:$space-m;
-}
-
 // PAGE BREAK
 .hr{margin:$space-xl 0;}
+
+// LISTS
+.list{
+    margin-left:$space-l; max-width:$max-width;
+    .list{margin:$space-s 0 0 $space-l;}
+}
+.list__li{list-style-type:disc; margin-bottom:$space-s;}
 
 // TABLE
 .table{
     width:100%; border:3px solid;
     td, th{padding:$space-s;}
+    th{
+        font-size:$font-size-m-b1;
+        font-weight:bold;
+    }
 }
 
 :root {
@@ -90,6 +96,20 @@ select{
             th, td:first-child{background:$color-grey-l2;}
         }
     }
+}
+
+// BUTTONS
+.btn{
+    border:1px solid $color-grey;
+    background:$color-white;
+    padding:$space-s $space-m;
+    border-radius: $radius-m;
+}
+
+// GRID SYSTEM
+.cols{
+    display:grid;
+    grid-gap:$space-l;
 }
 
 // THEME

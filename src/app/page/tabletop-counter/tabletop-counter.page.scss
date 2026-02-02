@@ -1,1 +1,13 @@
+@use '../../../assets/scss/01-settings' as *;
 
+.tabletop-app{margin-top:$space-m;}
+.tabletop-app .h2{margin-bottom:$space-s;}
+.tabletop-app__event__table{
+    margin-top:$space-m;
+    td{width:25%;}
+}
+.tabletop-app__event__navigation{
+    display:flex;
+    justify-content:space-between;
+    margin:$space-m 0 $space-l;
+}

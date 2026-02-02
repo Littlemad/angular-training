@@ -3,23 +3,55 @@
         <h1 class="h1 h1--margin">Tabletop</h1>
         <p>A simple app to count games</p>
 
-        <h2>Title</h2>
-    
-        @for (arr of games; track arr) {
-            <p>{{ arr.name }}</p>
-        }
-        <hr class="hr">
+        <tabpanel>
+            <ng-template #tabTitle>Players</ng-template>
+            <ng-template #tabContent>
+                <p>List of all players</p>
+                <list [listArray]="allPlayers()"></list>
+            </ng-template>
 
-        @for (arr of gameDays; track arr) {
-            <p>{{ arr.games }}</p>
-        }
-        <br>
-        <br>
+            <ng-template #tabTitle>Games</ng-template>
+            <ng-template #tabContent>
+                <p>List of all games</p>
+                <list [listArray]="allGamesNames()"></list>
+            </ng-template>
 
-        <button (click)="clickPrevEvent()">Prev Event</button>
-        <br>
-        <p>Dates: {{ currentDate() }} </p>
-        <br>
-        <button (click)="clickNextEvent()">Next Event</button>
+            <ng-template #tabTitle>Event</ng-template>
+            <ng-template #tabContent>
+                <p>List of all events</p>
+                <list [listArray]="allSessionDates()"></list>
+            </ng-template>
+
+            <ng-template #tabTitle>Winners</ng-template>
+            <ng-template #tabContent>
+                <p>List of all winners</p>
+                <list [listArray]="allWinners()"></list>
+            </ng-template>
+        </tabpanel>
+
+        <div class="tabletop-app">
+            <h2 class="h2">List of events</h2>
+            <p>Information about the event, players, games and results</p>
+            <div class="tabletop-app__event">
+                <table class="table tabletop-app__event__table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Game</th>
+                        <th>Players</th>
+                        <th>Results</th>
+                    </tr>
+                    <tr>
+                        <td>{{ currentDate() }}</td>
+                        <td><list [listArray]="currentResultGamesNames()"></list></td>
+                        <td><list [listArray]="currentPlayers()"></list></td>
+                        <td><list [listArray]="currentResultWinnersNames()"></list></td>
+                    </tr>
+                </table>
+                <nav class="tabletop-app__event__navigation">
+                    <button (click)="clickPrevEvent()">Previous Event</button>
+                    <button (click)="clickNextEvent()">Next Event</button>
+                </nav>
+            </div>
+        </div>
     </div>
 </div>

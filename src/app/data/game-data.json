@@ -3,24 +3,74 @@
         { "id": 1, "name": "Bloodborne cardgame" },
         { "id": 2, "name": "Citizen of the sparks" },
         { "id": 3, "name": "Dune imperium" },
-        { "id": 4, "name": "Rebirth" }
+        { "id": 4, "name": "Rebirth" },
+        { "id": 5, "name": "Terraforming Mars" },
+        { "id": 6, "name": "Wingspan" },
+        { "id": 7, "name": "Gloomhaven" },
+        { "id": 8, "name": "Everdell" }
     ],
     "players": [
         { "id": 1, "name": "Alessio" },
         { "id": 2, "name": "David" },
         { "id": 3, "name": "Luka" },
         { "id": 4, "name": "Kevin" },
-        { "id": 5, "name": "Thomas" }
+        { "id": 5, "name": "Thomas" },
+        { "id": 6, "name": "Sarah" },
+        { "id": 7, "name": "Elena" }
     ],
     "dates": [
         { "id": 1, "date": "2026-01-11" },
         { "id": 2, "date": "2026-01-12" },
         { "id": 3, "date": "2026-01-13" },
         { "id": 4, "date": "2026-01-14" },
-        { "id": 5, "date": "2026-01-15" }
+        { "id": 5, "date": "2026-01-15" },
+        { "id": 6, "date": "2026-01-20" },
+        { "id": 7, "date": "2026-01-25" },
+        { "id": 8, "date": "2026-01-30" }
     ],
-    "gameDays": [
-        { "id": 1, "dates": [1], "gamers": [1, 2, 3, 5], "games": [1, 2], "winner": [3, 2] },
-        { "id": 2, "dates": [2], "gamers": [2, 4, 5], "games": [3], "winner": [5] }
+    "gameSessions": [
+        {
+            "id": 1,
+            "dateId": [1],
+            "playerId": [1, 2, 3, 5],
+            "results": [
+                { "gameId": 1, "winnerPlayerId": 3 },
+                { "gameId": 2, "winnerPlayerId": 2 }
+            ]
+        },
+        {
+            "id": 2,
+            "dateId": [2],
+            "playerId": [2, 4, 5],
+            "results": [
+                { "gameId": 3, "winnerPlayerId": 5 }
+            ]
+        },
+        {
+            "id": 3,
+            "dateId": [6],
+            "playerId": [1, 3, 6, 7],
+            "results": [
+                { "gameId": 5, "winnerPlayerId": 6 },
+                { "gameId": 6, "winnerPlayerId": 1 }
+            ]
+        },
+        {
+            "id": 4,
+            "dateId": [7],
+            "playerId": [2, 4, 6],
+            "results": [
+                { "gameId": 7, "winnerPlayerId": 4 }
+            ]
+        },
+        {
+            "id": 5,
+            "dateId": [8],
+            "playerId": [1, 2, 5, 7],
+            "results": [
+                { "gameId": 8, "winnerPlayerId": 7 },
+                { "gameId": 3, "winnerPlayerId": 2 }
+            ]
+        }
     ]
 }

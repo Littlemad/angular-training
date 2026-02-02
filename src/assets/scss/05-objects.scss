@@ -1,19 +1,6 @@
 @use './01-settings' as *;
 @use './02-tools' as *;
 
-// GRID SYSTEM
-.cols{
-    display:grid;
-    grid-gap:$space-l;
-}
-
-// LISTS
-.list{
-    margin-left:$space-l; max-width:$max-width;
-    .list{margin:$space-s 0 0 $space-l;}
-}
-.list__li{list-style-type:disc; margin-bottom:$space-s;}
-
 // CONTAINERS
 .box{
     border:1px solid $color-grey-l1;
@@ -29,13 +16,9 @@
         margin:$space-m 0;
     }
 }
-
-// BUTTONS
-.btn{
-    border:1px solid $color-grey;
-    background:$color-white;
-    padding:$space-s $space-m;
-    border-radius: $radius-m;
+.experiment{
+    border:2px solid $color-grey-d2; // $color-grey-d2; why doesn't work?
+    padding:$space-m;
 }
 
 // ICONS
