@@ -21,6 +21,26 @@ export class PageTabletopCounterComponent {
         return myGameSession;
     }
 
+    /** All winner player IDs from every game result, in order. */
+    private getAllWinnerIds(): number[] {
+        return this.gameSessions.flatMap(session =>
+            session.results.map(r => r.winnerPlayerId)
+        );
+    }
+
+    /** Count how many times each player ID appears in the list. */
+    private countWinsById(winnerIds: number[]): Map<number, number> {
+        const countById = new Map<number, number>();
+        for (const id of winnerIds) {
+            countById.set(id, (countById.get(id) ?? 0) + 1);
+        }
+        return countById;
+    }
+
+    private formatWinCount(name: string, wins: number): string {
+        return wins === 1 ? `1 win - ${name}` : `${wins} wins - ${name}`;
+    }
+
     games = gameData.games;
     players = gameData.players;
     dates = gameData.dates;
@@ -72,10 +92,19 @@ export class PageTabletopCounterComponent {
         return this.games.map(x => x.name);
     });
     allSessionDates = computed(() => {
-        return this.gameSessions.map(x => x.dateId);
+        return this.gameSessions.map(session => {
+            const firstDateId = session.dateId[0];
+            return this.dates.find(d => d.id === firstDateId)?.date ?? 'Unknown';
+        });
     });
-    allWinners = computed(() => {
-        return this.gameSessions.map(x => x.results.map(y => y.winnerPlayerId));
+    /** Leaderboard: all players by win count (most wins first, 0 wins last). */
+    winnerLeaderboard = computed(() => {
+        const winnerIds = this.getAllWinnerIds();
+        const countById = this.countWinsById(winnerIds);
+        return this.players
+            .map(p => ({ name: p.name, wins: countById.get(p.id) ?? 0 }))
+            .sort((a, b) => b.wins - a.wins)
+            .map(({ name, wins }) => this.formatWinCount(name, wins));
     });
 
     /* Navigation interactions */

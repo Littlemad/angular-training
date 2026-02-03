@@ -60,7 +60,7 @@
             "dateId": [7],
             "playerId": [2, 4, 6],
             "results": [
-                { "gameId": 7, "winnerPlayerId": 4 }
+                { "gameId": 7, "winnerPlayerId": 2 }
             ]
         },
         {

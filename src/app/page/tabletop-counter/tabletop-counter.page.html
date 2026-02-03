@@ -18,14 +18,14 @@
 
             <ng-template #tabTitle>Event</ng-template>
             <ng-template #tabContent>
-                <p>List of all events</p>
+                <p>Dates</p>
                 <list [listArray]="allSessionDates()"></list>
             </ng-template>
 
             <ng-template #tabTitle>Winners</ng-template>
             <ng-template #tabContent>
-                <p>List of all winners</p>
-                <list [listArray]="allWinners()"></list>
+                <p>Times each player won (most wins first)</p>
+                <list [listArray]="winnerLeaderboard()"></list>
             </ng-template>
         </tabpanel>
 

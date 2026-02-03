@@ -1,5 +1,6 @@
-import { Component, ContentChildren, QueryList, TemplateRef, ViewEncapsulation, signal } from '@angular/core';
+import { Component, ContentChildren, inject, QueryList, TemplateRef, ViewEncapsulation, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UniqueIdService } from '../../services/unique-id.service';
 
 @Component({
     selector: 'tabpanel',
@@ -10,11 +11,13 @@ import { CommonModule } from '@angular/common';
     encapsulation: ViewEncapsulation.None
 })
 export class TabpanelComponent {
+    private readonly uniqueIdService = inject(UniqueIdService);
+
     @ContentChildren('tabTitle') tabTitles!: QueryList<TemplateRef<any>>;
     @ContentChildren('tabContent') tabContents!: QueryList<TemplateRef<any>>;
 
     activeTabIndex = signal(0);
-    uniqueId = Math.random().toString(36).substring(2, 9);
+    readonly uniqueId = this.uniqueIdService.generate();
 
     setActiveTab(index: number) {
         this.activeTabIndex.set(index);
