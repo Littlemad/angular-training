@@ -6,9 +6,39 @@
                 <p>A simple app to count games</p>
             </div>
             <div class="top-content__aside">
-                <button icon name="plus" altText="Add content"></button>
+                <button (click)="clickAddContent()" icon name="plus" altText="Add content"></button>
             </div>
         </div>
+        <ng-template #addContent>
+            <form>
+                <fieldset>
+                    <legend class="h2">New info to add</legend>
+                    <label for="date">
+                        <span class="label__text">Date</span>
+                        <input class="input" type="date" id="date" name="date">
+                    </label>
+                    <label for="game">
+                        <span class="label__text">Game</span>
+                        <input class="input" type="text" id="game" name="game">
+                    </label>
+                    <label for="player">
+                        <span class="label__text">Player</span>
+                        <input class="input" type="text" id="player" name="player">
+                    </label>
+                    <label for="winner">
+                        <span class="label__text">Winner</span>
+                        <input class="input" type="text" id="winner" name="winner">
+                    </label>
+                    <div class="form__actions">
+                        <button type="button" class="btn btn--secondary" (click)="clickAddContent()">Cancel</button>
+                        <button class="btn btn--primary">Add content</button>
+                    </div>
+                </fieldset>
+            </form>
+        </ng-template>
+        @if (showAddContent()) {
+            <ng-container *ngTemplateOutlet="addContent"></ng-container>
+        }
         <tabpanel>
             <ng-template #tabTitle>Players</ng-template>
             <ng-template #tabContent>

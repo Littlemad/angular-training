@@ -122,5 +122,11 @@ export class PageTabletopCounterComponent {
             this.currentEventId.set(this.gameSessions[0]);
         }
     }
+
+    showAddContent = signal(false);
+
+    clickAddContent() {
+        this.showAddContent.update((v) => !v);
+    }
 }
 
