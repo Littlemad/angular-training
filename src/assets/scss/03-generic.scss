@@ -25,6 +25,10 @@ table{border-collapse: collapse; border-spacing: 0;}
 html{box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
 
+// DEFINE NEW HTML ELEMENTS STANDARDS
+svg{display:inline-block; fill:currentColor;}
+button{cursor:pointer;}
+
 // CLEARFIX
 .cl:before, .cl:after{content:" "; display:table;}
 .cl:after{clear:both;}

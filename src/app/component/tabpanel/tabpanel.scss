@@ -3,7 +3,6 @@
 .tabpanel{margin-bottom:$space-l;}
 .tabpanel__nav{display:flex; margin-bottom:-1px;}
 .tabpanel__nav__btn{
-    cursor:pointer;
     border:1px solid $color-grey;
     border-width:1px 1px 0!important;
     padding:calc($space-s * 1.5) $space-m;
