@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UniqueIdService } from '../../services/unique-id.service';
 
 @Component({
-    selector: 'tabpanel',
+    selector: '[tabpanel]',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './tabpanel.html',

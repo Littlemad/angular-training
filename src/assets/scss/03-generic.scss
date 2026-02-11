@@ -15,7 +15,7 @@ figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, su
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display: block;}
-body{line-height: 1;}
+body{line-height:1;}
 ol, ul{list-style: none;}
 blockquote, q{quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
@@ -40,7 +40,6 @@ button{cursor:pointer;}
     --color-text: var(--color-lightTheme-text);
     --color-link: var(--color-lightTheme-link);
     --color-link-visited: var(--color-lightTheme-link-visited);
-
 }
 
 [data-theme="dark"] {

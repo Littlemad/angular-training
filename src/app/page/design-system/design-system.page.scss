@@ -1,7 +1,12 @@
 @use '../../../assets/scss/01-settings' as *;
 @use '../../../assets/scss/grid/grid-mixins' as *;
-@use '../../../assets/scss/grid/grid-system' as *;
 
+$color-white: var(--color-white);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+
+.list--main-index{margin-bottom:$space-xl;}
+.buttons-system--base{margin-top:$space-m;}
 
 .grid-system{
     padding:$space-xl;

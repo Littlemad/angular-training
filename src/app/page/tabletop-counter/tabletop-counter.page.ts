@@ -2,11 +2,12 @@ import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import gameData from '../../data/game-data.json';
 import { SHARED_IMPORTS } from '../../component/_shared/shared-imports';
 import { TabpanelComponent } from '../../component/tabpanel/tabpanel';
+import { AddPlayLogComponent } from '../../component/add-play-log/add-play-log';
 
 @Component({
     selector: 'section[pageTabletopCounter]',
     standalone: true,
-    imports: [SHARED_IMPORTS, TabpanelComponent],
+    imports: [SHARED_IMPORTS, TabpanelComponent, AddPlayLogComponent],
     templateUrl: './tabletop-counter.page.html',
     styleUrl: './tabletop-counter.page.scss',
     encapsulation: ViewEncapsulation.None,
@@ -123,6 +124,7 @@ export class PageTabletopCounterComponent {
         }
     }
 
+    // Show play log form
     showAddContent = signal(false);
 
     clickAddContent() {

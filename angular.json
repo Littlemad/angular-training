@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "data.json",
+                "input": "src/app/data",
+                "output": "/"
               }
             ],
             "stylePreprocessorOptions": {

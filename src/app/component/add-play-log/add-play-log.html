@@ -1,0 +1,35 @@
+<form class="form form--add-content">
+    <fieldset>
+        <legend class="h2 form__legend">Add play log</legend>
+        <div class="grid grid--gap-m">
+            <div class="grid__col grid__col3">
+                <label for="date">
+                    <span class="label__text">Date</span>
+                    <input class="input" type="date" id="date" name="date">
+                </label>
+            </div>
+            <div class="grid__col grid__col3">
+                <label for="game">
+                    <span class="label__text">Game</span>
+                    <input class="input" type="text" id="game" name="game">
+                </label>
+            </div>
+            <div class="grid__col grid__col3">
+                <label for="player">
+                    <span class="label__text">Player</span>
+                    <input class="input" type="text" id="player" name="player">
+                </label>
+            </div>
+            <div class="grid__col grid__col3">
+                <label for="winner">
+                    <span class="label__text">Winner</span>
+                    <input class="input" type="text" id="winner" name="winner">
+                </label>
+            </div>
+        </div>
+        <div class="form__actions">
+            <button type="button" class="btn btn--secondary" (click)="onCancel()">Cancel</button>
+            <button class="btn btn--primary">Add content</button>
+        </div>
+    </fieldset>
+</form>

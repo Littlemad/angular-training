@@ -39,7 +39,18 @@
 
 // Medium Desktop Size
 @media screen and (min-width:768px) {
-    .grid__col{@include col-size-1;} // basic value of the length of the column
+    .grid__col1{@include col-size-1;}
+    .grid__col2{@include col-size-2;}
+    .grid__col3{@include col-size-3;}
+    .grid__col4{@include col-size-4;}
+    .grid__col5{@include col-size-5;}
+    .grid__col6{@include col-size-6;}
+    .grid__col7{@include col-size-7;}
+    .grid__col8{@include col-size-8;}
+    .grid__col9{@include col-size-9;}
+    .grid__col10{@include col-size-10;}
+    .grid__col11{@include col-size-11;}
+    .grid__col12{@include col-size-12;}
 }
 
 // MAX WIDTH

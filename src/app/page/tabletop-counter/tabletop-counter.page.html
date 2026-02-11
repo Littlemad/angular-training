@@ -5,89 +5,68 @@
                 <h1 class="h1 h1--margin">Tabletop</h1>
                 <p>A simple app to count games</p>
             </div>
-            <div class="top-content__aside">
-                <button (click)="clickAddContent()" icon name="plus" altText="Add content"></button>
-            </div>
+            @if (!showAddContent()) {
+                <div class="top-content__aside">
+                    <button (click)="clickAddContent()" icon name="plus" altText="Add Play log"></button>
+                </div>
+            }
         </div>
-        <ng-template #addContent>
-            <form>
-                <fieldset>
-                    <legend class="h2">New info to add</legend>
-                    <label for="date">
-                        <span class="label__text">Date</span>
-                        <input class="input" type="date" id="date" name="date">
-                    </label>
-                    <label for="game">
-                        <span class="label__text">Game</span>
-                        <input class="input" type="text" id="game" name="game">
-                    </label>
-                    <label for="player">
-                        <span class="label__text">Player</span>
-                        <input class="input" type="text" id="player" name="player">
-                    </label>
-                    <label for="winner">
-                        <span class="label__text">Winner</span>
-                        <input class="input" type="text" id="winner" name="winner">
-                    </label>
-                    <div class="form__actions">
-                        <button type="button" class="btn btn--secondary" (click)="clickAddContent()">Cancel</button>
-                        <button class="btn btn--primary">Add content</button>
-                    </div>
-                </fieldset>
-            </form>
-        </ng-template>
+
         @if (showAddContent()) {
-            <ng-container *ngTemplateOutlet="addContent"></ng-container>
+            <section add-play-log (cancel)="clickAddContent()"></section>
         }
-        <tabpanel>
-            <ng-template #tabTitle>Players</ng-template>
-            <ng-template #tabContent>
-                <p>List of all players</p>
-                <list [listArray]="allPlayers()"></list>
-            </ng-template>
 
-            <ng-template #tabTitle>Games</ng-template>
-            <ng-template #tabContent>
-                <p>List of all games</p>
-                <list [listArray]="allGamesNames()"></list>
-            </ng-template>
+        @if (!showAddContent()) {
+            <section tabpanel>
+                <ng-template #tabTitle>Players</ng-template>
+                <ng-template #tabContent>
+                    <p>List of all players</p>
+                    <list [listArray]="allPlayers()"></list>
+                </ng-template>
 
-            <ng-template #tabTitle>Event</ng-template>
-            <ng-template #tabContent>
-                <p>Dates</p>
-                <list [listArray]="allSessionDates()"></list>
-            </ng-template>
+                <ng-template #tabTitle>Games</ng-template>
+                <ng-template #tabContent>
+                    <p>List of all games</p>
+                    <list [listArray]="allGamesNames()"></list>
+                </ng-template>
 
-            <ng-template #tabTitle>Winners</ng-template>
-            <ng-template #tabContent>
-                <p>Times each player won (most wins first)</p>
-                <list [listArray]="winnerLeaderboard()"></list>
-            </ng-template>
-        </tabpanel>
+                <ng-template #tabTitle>Event</ng-template>
+                <ng-template #tabContent>
+                    <p>Dates</p>
+                    <list [listArray]="allSessionDates()"></list>
+                </ng-template>
 
-        <div class="tabletop-app">
-            <h2 class="h2">List of events</h2>
-            <p>Information about the event, players, games and results</p>
-            <div class="tabletop-app__event">
-                <table class="table tabletop-app__event__table">
-                    <tr>
-                        <th>Date</th>
-                        <th>Game</th>
-                        <th>Players</th>
-                        <th>Results</th>
-                    </tr>
-                    <tr>
-                        <td>{{ currentDate() }}</td>
-                        <td><list [listArray]="currentResultGamesNames()"></list></td>
-                        <td><list [listArray]="currentPlayers()"></list></td>
-                        <td><list [listArray]="currentResultWinnersNames()"></list></td>
-                    </tr>
-                </table>
-                <nav class="tabletop-app__event__navigation">
-                    <button (click)="clickPrevEvent()">Previous Event</button>
-                    <button (click)="clickNextEvent()">Next Event</button>
-                </nav>
+                <ng-template #tabTitle>Winners</ng-template>
+                <ng-template #tabContent>
+                    <p>Times each player won (most wins first)</p>
+                    <list [listArray]="winnerLeaderboard()"></list>
+                </ng-template>
+            </section>
+
+            <div class="tabletop-app">
+                <h2 class="h2">List of events</h2>
+                <p>Information about the event, players, games and results</p>
+                <div class="tabletop-app__event">
+                    <table class="table tabletop-app__event__table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Game</th>
+                            <th>Players</th>
+                            <th>Results</th>
+                        </tr>
+                        <tr>
+                            <td>{{ currentDate() }}</td>
+                            <td><list [listArray]="currentResultGamesNames()"></list></td>
+                            <td><list [listArray]="currentPlayers()"></list></td>
+                            <td><list [listArray]="currentResultWinnersNames()"></list></td>
+                        </tr>
+                    </table>
+                    <nav class="tabletop-app__event__navigation">
+                        <button (click)="clickPrevEvent()">Previous Event</button>
+                        <button (click)="clickNextEvent()">Next Event</button>
+                    </nav>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

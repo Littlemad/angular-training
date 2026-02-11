@@ -6,8 +6,44 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>
+      (function() {
+        fetch('data.json')
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var css = ':root {\n';
+            (data.colors || []).forEach(function(c) {
+              css += '  --color-' + c.var + ': ' + c.value + ';\n';
+            });
+            (data.links || []).forEach(function(l) {
+              css += '  --color-' + l.var + ': ' + l.value + ';\n';
+              if (l.themeDark) {
+                css += '  --color-' + l.var + '-dark: ' + l.themeDark + ';\n';
+              }
+            });
+            css += '}\n';
+            var hasDarkTheme = (data.links || []).some(function(l) { return l.themeDark; });
+            if (hasDarkTheme) {
+              css += '\nhtml[darktheme] {\n';
+              (data.links || []).forEach(function(l) {
+                if (l.themeDark) {
+                  css += '  --color-' + l.var + ': ' + l.themeDark + ';\n';
+                }
+              });
+              css += '}\n';
+            }
+            var style = document.getElementById('dynamic-css-variables');
+            if (!style) {
+              style = document.createElement('style');
+              style.id = 'dynamic-css-variables';
+              style.type = 'text/css';
+              document.head.appendChild(style);
+            }
+            style.textContent = css;
+          })
+          .catch(function(err) { console.warn('Could not load design tokens:', err); });
+      })();
+    </script>
 </head>
-<body class="body">
-    <div appRoot></div>
-</body>
+<body appRoot></body>
 </html>

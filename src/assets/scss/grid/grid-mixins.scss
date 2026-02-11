@@ -1,5 +1,3 @@
-/* Grid mixins only (no CSS output). Safe to @use in component styles without duplicating global CSS.*/
-
 /* Apply the same class value to multiple columns at the same time (useful for symmetrical declaration of columns) */
 @mixin column($n, $max) {
   %mod#{$n} {
@@ -25,6 +23,7 @@
   }
 }
 
+/* Pregenerated mixin of style that can be used in the project*/
 @mixin col-size-1{grid-column:span 1;}
 @mixin col-size-2{grid-column:span 2;}
 @mixin col-size-3{grid-column:span 3;}

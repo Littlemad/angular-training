@@ -21,6 +21,11 @@
     padding:$space-m;
 }
 
+// FORMS
+.form__legend{margin-bottom:$space-m;}
+.form__actions{margin-top:$space-m;}
+.label__text{display:block;}
+
 // ICONS
 .icon{fill:var(--color-text);}
 .icon--size-xs{width:toRem(16); height:toRem(16);}

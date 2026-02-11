@@ -1,6 +1,6 @@
 @use '../../../assets/scss/01-settings' as *;
 
-#main-nav{background:$color-primary; margin-bottom:$space-m; font-weight:bold;}
+#main-nav{background:$color-primary; font-weight:bold;}
 .main-nav__ul{display:flex;}
 .main-nav__link{
     display:block; padding:$space-m; color:$color-white;
