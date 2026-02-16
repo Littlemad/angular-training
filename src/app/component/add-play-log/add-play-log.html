@@ -5,31 +5,56 @@
             <div class="grid__col grid__col3">
                 <label for="date">
                     <span class="label__text">Date</span>
-                    <input class="input" type="date" id="date" name="date">
+                    <input class="input" type="date" id="date" name="date" [(ngModel)]="date">
                 </label>
             </div>
             <div class="grid__col grid__col3">
                 <label for="game">
-                    <span class="label__text">Game</span>
-                    <input class="input" type="text" id="game" name="game">
+                    <span class="label__text">Game name</span>
+                    <input class="input" type="text" id="game" name="game" [(ngModel)]="gameName">
                 </label>
             </div>
             <div class="grid__col grid__col3">
-                <label for="player">
-                    <span class="label__text">Player</span>
-                    <input class="input" type="text" id="player" name="player">
+                <label for="number-of-players">
+                    <span class="label__text">Number of players</span>
+                    <select
+                        class="input"
+                        name="number-of-players"
+                        id="number-of-players"
+                        [(ngModel)]="numberOfPlayers"
+                        (ngModelChange)="onNumberOfPlayersChange()"
+                    >
+                        @for (n of playerCountOptions; track n) {
+                            <option [value]="n">{{ n }}</option>
+                        }
+                    </select>
                 </label>
             </div>
+        </div>
+        <div class="grid grid--gap-m">
+            @for (i of playerIndexes; track i) {
+                <div class="grid__col grid__col3">
+                    <label [for]="'add-player' + (i + 1)">
+                        <span class="label__text">Player {{ i + 1 }}</span>
+                        <input
+                            class="input"
+                            type="text"
+                            [id]="'add-player' + (i + 1)"
+                            [name]="'add-player' + (i + 1)"
+                            [(ngModel)]="playerNames[i]">
+                    </label>
+                </div>
+            }
             <div class="grid__col grid__col3">
                 <label for="winner">
                     <span class="label__text">Winner</span>
-                    <input class="input" type="text" id="winner" name="winner">
+                    <input class="input" type="text" id="winner" name="winner" [(ngModel)]="winnerName">
                 </label>
             </div>
         </div>
         <div class="form__actions">
             <button type="button" class="btn btn--secondary" (click)="onCancel()">Cancel</button>
-            <button class="btn btn--primary">Add content</button>
+            <button type="button" class="btn btn--primary" (click)="onAddContent()">Add content</button>
         </div>
     </fieldset>
 </form>

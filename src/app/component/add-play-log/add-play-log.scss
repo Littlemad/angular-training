@@ -1,3 +1,9 @@
 @use '../../../assets/scss/01-settings' as *;
 
-.form--add-content{padding:$space-m; border:1px solid $color-grey; background-color:$color-white; border-radius:$radius-m;}
+.form--add-content{
+    padding:$space-m; border:1px solid $color-grey;
+    background-color:$color-white; border-radius:$radius-m;
+    .grid{margin-bottom:$space-m;}
+}
+
+.form__actions{display:flex; justify-content:flex-end; gap:$space-m;}

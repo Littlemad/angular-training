@@ -13,7 +13,7 @@
         </div>
 
         @if (showAddContent()) {
-            <section add-play-log (cancel)="clickAddContent()"></section>
+            <section add-play-log (cancel)="clickAddContent()" (addPlayLog)="onAddPlayLog($event)"></section>
         }
 
         @if (!showAddContent()) {

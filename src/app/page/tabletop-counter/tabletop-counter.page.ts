@@ -2,7 +2,10 @@ import { Component, computed, signal, ViewEncapsulation } from '@angular/core';
 import gameData from '../../data/game-data.json';
 import { SHARED_IMPORTS } from '../../component/_shared/shared-imports';
 import { TabpanelComponent } from '../../component/tabpanel/tabpanel';
-import { AddPlayLogComponent } from '../../component/add-play-log/add-play-log';
+import {
+    AddPlayLogComponent,
+    AddPlayLogPayload,
+} from '../../component/add-play-log/add-play-log';
 
 @Component({
     selector: 'section[pageTabletopCounter]',
@@ -42,10 +45,15 @@ export class PageTabletopCounterComponent {
         return wins === 1 ? `1 win - ${name}` : `${wins} wins - ${name}`;
     }
 
-    games = gameData.games;
-    players = gameData.players;
-    dates = gameData.dates;
-    gameSessions = gameData.gameSessions;
+    games = gameData.games as { id: number; name: string }[];
+    players = gameData.players as { id: number; name: string }[];
+    dates = gameData.dates as { id: number; date: string }[];
+    gameSessions = gameData.gameSessions as {
+        id: number;
+        dateId: number[];
+        playerId: number[];
+        results: { gameId: number; winnerPlayerId: number }[];
+    }[];
 
     /* Current event values */
     currentEventId = signal(this.getGameSessionById(1));
@@ -129,6 +137,62 @@ export class PageTabletopCounterComponent {
 
     clickAddContent() {
         this.showAddContent.update((v) => !v);
+    }
+
+    private nextId<T extends { id: number }>(arr: T[]): number {
+        return arr.length === 0 ? 1 : Math.max(...arr.map((x) => x.id)) + 1;
+    }
+
+    private findOrAddDate(dateStr: string): number {
+        const existing = this.dates.find((d) => d.date === dateStr);
+        if (existing) return existing.id;
+        const id = this.nextId(this.dates);
+        this.dates.push({ id, date: dateStr });
+        return id;
+    }
+
+    private findOrAddGame(name: string): number {
+        const existing = this.games.find((g) => g.name === name);
+        if (existing) return existing.id;
+        const id = this.nextId(this.games);
+        this.games.push({ id, name });
+        return id;
+    }
+
+    private findOrAddPlayer(name: string): number {
+        const existing = this.players.find((p) => p.name === name);
+        if (existing) return existing.id;
+        const id = this.nextId(this.players);
+        this.players.push({ id, name });
+        return id;
+    }
+
+    onAddPlayLog(payload: AddPlayLogPayload) {
+        const dateId = this.findOrAddDate(payload.date);
+        const gameId = this.findOrAddGame(payload.gameName);
+        const playerIds = payload.playerNames
+            .filter((name) => name.trim() !== '')
+            .map((name) => this.findOrAddPlayer(name.trim()));
+        const winner = this.players.find(
+            (p) => p.name.toLowerCase() === payload.winnerName.trim().toLowerCase()
+        );
+        const winnerPlayerId = winner
+            ? winner.id
+            : payload.winnerName.trim()
+              ? this.findOrAddPlayer(payload.winnerName.trim())
+              : playerIds[0];
+
+        const sessionId = this.nextId(this.gameSessions);
+        this.gameSessions.push({
+            id: sessionId,
+            dateId: [dateId],
+            playerId: playerIds.length > 0 ? playerIds : [this.players[0].id],
+            results: [{ gameId, winnerPlayerId }],
+        });
+
+        this.showAddContent.set(false);
+        const newSession = this.gameSessions.find((s) => s.id === sessionId);
+        if (newSession) this.currentEventId.set(newSession);
     }
 }
 

@@ -4,9 +4,13 @@
 $color-white: var(--color-white);
 $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
 
 .list--main-index{margin-bottom:$space-xl;}
-.buttons-system--base{margin-top:$space-m;}
+.buttons-system{
+    .h2{margin-bottom:$space-s;}
+    .grid{margin-top:$space-m;}
+}
 
 .grid-system{
     padding:$space-xl;
@@ -17,8 +21,8 @@ $color-secondary: var(--color-secondary);
     .grid__col{background: $color-white;}
 }
 
-%primary-color{background: $color-primary; color: $color-white;}
-%secondary-color{background: $color-secondary;}
+%primary-color{background:$color-primary; color:$color-white;}
+%secondary-color{background:$color-secondary;}
 
 .grid-system--01{
     @include column(1, 28) {

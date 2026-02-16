@@ -62,9 +62,9 @@ code{font-family: Consolas,"courier new";}
 select{
     @extend .font-size-m;
     padding:$space-xs;
-    margin-left:$space-s;
 }
-.input{width:100%; padding:$space-s;}
+.input{width:100%; padding:$space-s; height:36px;}
+.input[type="date"]{cursor:pointer; font-family:$font-family-primary;}
 
 // PAGE BREAK
 .hr{margin:$space-xl 0;}
@@ -95,16 +95,20 @@ select{
 
 // BUTTONS
 .btn{
-    border:1px solid $color-grey;
+    border:1px solid $color-black;
     background:$color-white;
     padding:$space-s $space-m;
     border-radius: $radius-m;
 }
 
 .btn--primary{background:$color-primary; color:$color-white;}
-.btn--secondary{background:$color-secondary; color:$color-white;}
+.btn--secondary{border-color:$color-primary; box-shadow:inset 0px 0px 0px 2px $color-primary;}
+/*
+.btn--secondary{background:$color-secondary;}*/
+
+.btn--tertiary{background:$color-tertiary; color:$color-white;}
 .btn--success{background:$color-success; color:$color-white;}
-.btn--warn{background:$color-warn; color:$color-white;}
+.btn--warn{background:$color-warn;}
 .btn--fail{background:$color-fail; color:$color-white;}
 .btn--link{color:$color-link; background:none; padding:0; text-decoration:underline; border:none;}
 
