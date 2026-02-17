@@ -17,17 +17,18 @@ import {
 })
 export class PageTabletopCounterComponent {
     private getGameSessionById(sessionId: number) {
-        let myGameSession = this.gameSessions.find(x => x.id === sessionId);
+        const sessions = this.gameSessions();
+        let myGameSession = sessions.find(x => x.id === sessionId);
         if (myGameSession === undefined) {
             // Return the first game session as a fallback instead of a string
-            return this.gameSessions[0];
+            return sessions[0];
         }
         return myGameSession;
     }
 
     /** All winner player IDs from every game result, in order. */
     private getAllWinnerIds(): number[] {
-        return this.gameSessions.flatMap(session =>
+        return this.gameSessions().flatMap(session =>
             session.results.map(r => r.winnerPlayerId)
         );
     }
@@ -45,15 +46,15 @@ export class PageTabletopCounterComponent {
         return wins === 1 ? `1 win - ${name}` : `${wins} wins - ${name}`;
     }
 
-    games = gameData.games as { id: number; name: string }[];
-    players = gameData.players as { id: number; name: string }[];
-    dates = gameData.dates as { id: number; date: string }[];
-    gameSessions = gameData.gameSessions as {
+    games = signal(gameData.games as { id: number; name: string }[]);
+    players = signal(gameData.players as { id: number; name: string }[]);
+    dates = signal(gameData.dates as { id: number; date: string }[]);
+    gameSessions = signal(gameData.gameSessions as {
         id: number;
         dateId: number[];
         playerId: number[];
         results: { gameId: number; winnerPlayerId: number }[];
-    }[];
+    }[]);
 
     /* Current event values */
     currentEventId = signal(this.getGameSessionById(1));
@@ -61,9 +62,11 @@ export class PageTabletopCounterComponent {
     currentPlayersId = computed(() => this.currentEventId().playerId);
     currentResultsId = computed(() => this.currentEventId().results);
     currentResultGames = computed(() => {
+        const games = this.games();
+        const players = this.players();
         return this.currentResultsId().map(result => {
-            const game = this.games.find(x => x.id === result.gameId);
-            const winner = this.players.find(y => y.id === result.winnerPlayerId);
+            const game = games.find(x => x.id === result.gameId);
+            const winner = players.find(y => y.id === result.winnerPlayerId);
             return {
                 gameName: game?.name ?? 'Unknown Game',
                 winnerName: winner?.name ?? 'Unknown Winner'
@@ -72,12 +75,13 @@ export class PageTabletopCounterComponent {
     });
     currentDate = computed(() => {
         const firstDateId = this.currentDatesId()[0];
-        return this.dates.find(date => date.id === firstDateId)?.date;
+        return this.dates().find(date => date.id === firstDateId)?.date;
     });
 
     currentPlayers = computed(() => {
+        const players = this.players();
         return this.currentPlayersId().map(player => {
-            return this.players.find(x => x.id === player)?.name;
+            return players.find(x => x.id === player)?.name;
         });
     });
 
@@ -90,27 +94,28 @@ export class PageTabletopCounterComponent {
     });
 
     currentIndex = computed(() => {
-        return this.gameSessions.findIndex(x => x.id === this.currentEventId().id);
+        return this.gameSessions().findIndex(x => x.id === this.currentEventId().id);
     });
 
     /* List of all values of a specific topic */
     allPlayers = computed(() => {
-        return this.players.map(x => x.name);
+        return this.players().map(x => x.name);
     });
     allGamesNames = computed(() => {
-        return this.games.map(x => x.name);
+        return this.games().map(x => x.name);
     });
     allSessionDates = computed(() => {
-        return this.gameSessions.map(session => {
+        const dates = this.dates();
+        return this.gameSessions().map(session => {
             const firstDateId = session.dateId[0];
-            return this.dates.find(d => d.id === firstDateId)?.date ?? 'Unknown';
+            return dates.find(d => d.id === firstDateId)?.date ?? 'Unknown';
         });
     });
     /** Leaderboard: all players by win count (most wins first, 0 wins last). */
     winnerLeaderboard = computed(() => {
         const winnerIds = this.getAllWinnerIds();
         const countById = this.countWinsById(winnerIds);
-        return this.players
+        return this.players()
             .map(p => ({ name: p.name, wins: countById.get(p.id) ?? 0 }))
             .sort((a, b) => b.wins - a.wins)
             .map(({ name, wins }) => this.formatWinCount(name, wins));
@@ -118,17 +123,19 @@ export class PageTabletopCounterComponent {
 
     /* Navigation interactions */
     clickPrevEvent() {
+        const sessions = this.gameSessions();
         if (this.currentIndex() > 0) {
-            this.currentEventId.set(this.gameSessions[this.currentIndex() - 1]);
+            this.currentEventId.set(sessions[this.currentIndex() - 1]);
         } else {
-            this.currentEventId.set(this.gameSessions[this.gameSessions.length - 1]);
+            this.currentEventId.set(sessions[sessions.length - 1]);
         }
     }
     clickNextEvent() {
-        if (this.currentIndex() < this.gameSessions.length - 1) {
-            this.currentEventId.set(this.gameSessions[this.currentIndex() + 1]);
+        const sessions = this.gameSessions();
+        if (this.currentIndex() < sessions.length - 1) {
+            this.currentEventId.set(sessions[this.currentIndex() + 1]);
         } else {
-            this.currentEventId.set(this.gameSessions[0]);
+            this.currentEventId.set(sessions[0]);
         }
     }
 
@@ -144,26 +151,26 @@ export class PageTabletopCounterComponent {
     }
 
     private findOrAddDate(dateStr: string): number {
-        const existing = this.dates.find((d) => d.date === dateStr);
+        const existing = this.dates().find((d) => d.date === dateStr);
         if (existing) return existing.id;
-        const id = this.nextId(this.dates);
-        this.dates.push({ id, date: dateStr });
+        const id = this.nextId(this.dates());
+        this.dates.update((dates) => [...dates, { id, date: dateStr }]);
         return id;
     }
 
     private findOrAddGame(name: string): number {
-        const existing = this.games.find((g) => g.name === name);
+        const existing = this.games().find((g) => g.name === name);
         if (existing) return existing.id;
-        const id = this.nextId(this.games);
-        this.games.push({ id, name });
+        const id = this.nextId(this.games());
+        this.games.update((games) => [...games, { id, name }]);
         return id;
     }
 
     private findOrAddPlayer(name: string): number {
-        const existing = this.players.find((p) => p.name === name);
+        const existing = this.players().find((p) => p.name === name);
         if (existing) return existing.id;
-        const id = this.nextId(this.players);
-        this.players.push({ id, name });
+        const id = this.nextId(this.players());
+        this.players.update((players) => [...players, { id, name }]);
         return id;
     }
 
@@ -173,7 +180,7 @@ export class PageTabletopCounterComponent {
         const playerIds = payload.playerNames
             .filter((name) => name.trim() !== '')
             .map((name) => this.findOrAddPlayer(name.trim()));
-        const winner = this.players.find(
+        const winner = this.players().find(
             (p) => p.name.toLowerCase() === payload.winnerName.trim().toLowerCase()
         );
         const winnerPlayerId = winner
@@ -182,17 +189,18 @@ export class PageTabletopCounterComponent {
               ? this.findOrAddPlayer(payload.winnerName.trim())
               : playerIds[0];
 
-        const sessionId = this.nextId(this.gameSessions);
-        this.gameSessions.push({
+        const sessionId = this.nextId(this.gameSessions());
+        const firstPlayerId = this.players()[0]?.id;
+        const newSession = {
             id: sessionId,
             dateId: [dateId],
-            playerId: playerIds.length > 0 ? playerIds : [this.players[0].id],
+            playerId: playerIds.length > 0 ? playerIds : firstPlayerId ? [firstPlayerId] : [],
             results: [{ gameId, winnerPlayerId }],
-        });
+        };
+        this.gameSessions.update((sessions) => [...sessions, newSession]);
 
         this.showAddContent.set(false);
-        const newSession = this.gameSessions.find((s) => s.id === sessionId);
-        if (newSession) this.currentEventId.set(newSession);
+        this.currentEventId.set(newSession);
     }
 }
 

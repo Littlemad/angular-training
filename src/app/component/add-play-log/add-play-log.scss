@@ -5,5 +5,5 @@
     background-color:$color-white; border-radius:$radius-m;
     .grid{margin-bottom:$space-m;}
 }
-
 .form__actions{display:flex; justify-content:flex-end; gap:$space-m;}
+.form__error{margin:$space-xs 0 0; color:$color-fail;}

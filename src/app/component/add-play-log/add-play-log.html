@@ -5,14 +5,36 @@
             <div class="grid__col grid__col3">
                 <label for="date">
                     <span class="label__text">Date</span>
-                    <input class="input" type="date" id="date" name="date" [(ngModel)]="date">
+                    <input
+                        required
+                        class="input"
+                        type="date"
+                        id="date"
+                        name="date"
+                        [attr.aria-invalid]="isInvalid(date) ? 'true' : null"
+                        [attr.aria-describedby]="isInvalid(date) ? 'date-error' : null"
+                        [(ngModel)]="date">
                 </label>
+                @if (isInvalid(date)) {
+                    <p id="date-error" class="form__error">Date is required</p>
+                }
             </div>
             <div class="grid__col grid__col3">
                 <label for="game">
                     <span class="label__text">Game name</span>
-                    <input class="input" type="text" id="game" name="game" [(ngModel)]="gameName">
+                    <input
+                        required
+                        class="input"
+                        type="text"
+                        id="game"
+                        name="game"
+                        [attr.aria-invalid]="isInvalid(gameName) ? 'true' : null"
+                        [attr.aria-describedby]="isInvalid(gameName) ? 'game-error' : null"
+                        [(ngModel)]="gameName">
                 </label>
+                @if (isInvalid(gameName)) {
+                    <p id="game-error" class="form__error">Game name is required</p>
+                }
             </div>
             <div class="grid__col grid__col3">
                 <label for="number-of-players">
@@ -37,19 +59,36 @@
                     <label [for]="'add-player' + (i + 1)">
                         <span class="label__text">Player {{ i + 1 }}</span>
                         <input
+                            required
                             class="input"
                             type="text"
                             [id]="'add-player' + (i + 1)"
                             [name]="'add-player' + (i + 1)"
+                            [attr.aria-invalid]="isInvalid(playerNames[i]) ? 'true' : null"
+                            [attr.aria-describedby]="isInvalid(playerNames[i]) ? 'add-player-error' + (i + 1) : null"
                             [(ngModel)]="playerNames[i]">
                     </label>
+                    @if (isInvalid(playerNames[i])) {
+                        <p [id]="'add-player-error' + (i + 1)" class="form__error">Player {{ i + 1 }} name is required</p>
+                    }
                 </div>
             }
             <div class="grid__col grid__col3">
                 <label for="winner">
                     <span class="label__text">Winner</span>
-                    <input class="input" type="text" id="winner" name="winner" [(ngModel)]="winnerName">
+                    <input
+                        required
+                        class="input"
+                        type="text"
+                        id="winner"
+                        name="winner"
+                        [attr.aria-invalid]="isInvalid(winnerName) ? 'true' : null"
+                        [attr.aria-describedby]="isInvalid(winnerName) ? 'winner-error' : null"
+                        [(ngModel)]="winnerName">
                 </label>
+                @if (isInvalid(winnerName)) {
+                    <p id="winner-error" class="form__error">Winner is required</p>
+                }
             </div>
         </div>
         <div class="form__actions">

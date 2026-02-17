@@ -13,28 +13,50 @@ export type { AddPlayLogPayload } from './add-play-log.model';
     encapsulation: ViewEncapsulation.None,
 })
 export class AddPlayLogComponent {
-// CANCEL
+    // CANCEL
     cancel = output<void>();
 
     onCancel() {
         this.cancel.emit();
     }
 
-// ADD PLAY
+    // ADD PLAY
     addPlayLog = output<AddPlayLogPayload>();
 
     // Form model
     date = '';
     gameName = '';
     winnerName = '';
+    hasTriedSubmit = false;
 
     onAddContent() {
+        this.hasTriedSubmit = true;
+        if (!this.isFormValid()) {
+            return;
+        }
+
         this.addPlayLog.emit({
             date: this.date,
             gameName: this.gameName,
             playerNames: this.playerNames.slice(0, this.numberOfPlayers),
             winnerName: this.winnerName,
         });
+    }
+
+    isInvalid(value: string): boolean {
+        return this.hasTriedSubmit && this.isEmpty(value);
+    }
+
+    private isFormValid(): boolean {
+        if (this.isEmpty(this.date) || this.isEmpty(this.gameName) || this.isEmpty(this.winnerName)) {
+            return false;
+        }
+
+        return this.playerIndexes.every((index) => !this.isEmpty(this.playerNames[index]));
+    }
+
+    private isEmpty(value: string): boolean {
+        return value.trim().length === 0;
     }
 
     // NUMBER OF PLAYERS
