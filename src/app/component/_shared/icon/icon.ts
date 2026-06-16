@@ -4,7 +4,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
     selector: '[icon]',
     standalone: true,
     templateUrl: './icon.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 export class IconComponent {
     @Input() name = '';

@@ -1,13 +1,14 @@
 import { Component, output, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import type { AddPlayLogPayload } from './add-play-log.model';
+import { SelectComponent } from "../_shared/select/select";
 
 export type { AddPlayLogPayload } from './add-play-log.model';
 
 @Component({
     selector: '[add-play-log]',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, SelectComponent],
     templateUrl: './add-play-log.html',
     styleUrl: './add-play-log.scss',
     encapsulation: ViewEncapsulation.None,
@@ -64,6 +65,7 @@ export class AddPlayLogComponent {
     readonly playerCountOptions = [1, 2, 3, 4, 5, 6, 7, 8]; // Option standard values
     numberOfPlayers = 4; // Default number of players
     playerNames: string[] = ['', '', '', ''];
+    winnerOptions: string[] = [];
 
     // Temporary array for looping in the template
     get playerIndexes(): number[] {
@@ -79,5 +81,10 @@ export class AddPlayLogComponent {
         while (this.playerNames.length < n) {             // if we go bigger, we grow arrays with empty strings
             this.playerNames.push('');
         }
+        this.updateWinnerOptions();
+    }
+
+    updateWinnerOptions(): void {
+        this.winnerOptions = this.playerNames.filter(name => name.trim().length > 0);
     }
 }

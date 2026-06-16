@@ -66,34 +66,37 @@
                             [name]="'add-player' + (i + 1)"
                             [attr.aria-invalid]="isInvalid(playerNames[i]) ? 'true' : null"
                             [attr.aria-describedby]="isInvalid(playerNames[i]) ? 'add-player-error' + (i + 1) : null"
-                            [(ngModel)]="playerNames[i]">
+                            [(ngModel)]="playerNames[i]"
+                            (blur)="updateWinnerOptions()">
                     </label>
                     @if (isInvalid(playerNames[i])) {
                         <p [id]="'add-player-error' + (i + 1)" class="form__error">Player {{ i + 1 }} name is required</p>
                     }
                 </div>
             }
+        </div>
+        <div class="grid grid--gap-m">
             <div class="grid__col grid__col3">
-                <label for="winner">
-                    <span class="label__text">Winner</span>
-                    <input
-                        required
-                        class="input"
-                        type="text"
-                        id="winner"
-                        name="winner"
-                        [attr.aria-invalid]="isInvalid(winnerName) ? 'true' : null"
-                        [attr.aria-describedby]="isInvalid(winnerName) ? 'winner-error' : null"
-                        [(ngModel)]="winnerName">
-                </label>
+                <app-select
+                    id="select-winner"
+                    name="select-winner"
+                    label="Winner"
+                    [options]="winnerOptions"
+                    [(ngModel)]="winnerName">
+                </app-select>
                 @if (isInvalid(winnerName)) {
                     <p id="winner-error" class="form__error">Winner is required</p>
                 }
             </div>
+
         </div>
-        <div class="form__actions">
-            <button type="button" class="btn btn--secondary" (click)="onCancel()">Cancel</button>
-            <button type="button" class="btn btn--primary" (click)="onAddContent()">Add content</button>
+        <div class="grid grid--gap-m">
+            <div class="grid__col grid__col12">
+                <div class="form__actions">
+                    <button type="button" class="btn btn--cancel" (click)="onCancel()">Cancel</button>
+                    <button type="button" class="btn btn--confirm" (click)="onAddContent()">Add content</button>
+                </div>
+            </div>
         </div>
     </fieldset>
 </form>

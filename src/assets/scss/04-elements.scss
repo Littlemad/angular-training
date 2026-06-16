@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use './01-settings' as *;
 @use './02-tools' as *;
 
@@ -95,21 +96,17 @@ select{
 
 // BUTTONS
 .btn{
-    border:1px solid $color-black;
+    border:1px solid;
     background:$color-white;
     padding:$space-s $space-m;
     border-radius: $radius-m;
 }
 
 .btn--primary{background:$color-primary; color:$color-white;}
-.btn--secondary{border-color:$color-primary; box-shadow:inset 0px 0px 0px 2px $color-primary;}
-/*
-.btn--secondary{background:$color-secondary;}*/
-
+.btn--secondary{background:$color-secondary;}
 .btn--tertiary{background:$color-tertiary; color:$color-white;}
-.btn--success{background:$color-success; color:$color-white;}
-.btn--warn{background:$color-warn;}
-.btn--fail{background:$color-fail; color:$color-white;}
+.btn--confirm{background:$color-success; color:$color-white;}
+.btn--cancel{background:$color-fail; color:$color-white;}
 .btn--link{color:$color-link; background:none; padding:0; text-decoration:underline; border:none;}
 
 // GRID SYSTEM
