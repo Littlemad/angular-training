@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'app-select',
+    selector: '[app-select]',
     standalone: true,
     imports: [FormsModule],
     templateUrl: './select.html',

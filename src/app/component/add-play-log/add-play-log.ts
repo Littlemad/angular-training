@@ -1,6 +1,7 @@
 import { Component, output, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import type { AddPlayLogPayload } from './add-play-log.model';
+import { InputComponent } from '../_shared/input/input';
 import { SelectComponent } from "../_shared/select/select";
 
 export type { AddPlayLogPayload } from './add-play-log.model';
@@ -8,7 +9,7 @@ export type { AddPlayLogPayload } from './add-play-log.model';
 @Component({
     selector: '[add-play-log]',
     standalone: true,
-    imports: [FormsModule, SelectComponent],
+    imports: [FormsModule, InputComponent, SelectComponent],
     templateUrl: './add-play-log.html',
     styleUrl: './add-play-log.scss',
     encapsulation: ViewEncapsulation.None,

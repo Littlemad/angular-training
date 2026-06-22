@@ -3,35 +3,31 @@
         <legend class="h2 form__legend">Add play log</legend>
         <div class="grid grid--gap-m">
             <div class="grid__col grid__col3">
-                <label for="date">
-                    <span class="label__text">Date</span>
-                    <input
-                        required
-                        class="input"
-                        type="date"
-                        id="date"
-                        name="date"
-                        [attr.aria-invalid]="isInvalid(date) ? 'true' : null"
-                        [attr.aria-describedby]="isInvalid(date) ? 'date-error' : null"
-                        [(ngModel)]="date">
-                </label>
+                <div app-input
+                    [errorId]="'date-error'"
+                    [id]="'date'"
+                    [invalid]="isInvalid(date)"
+                    [label]="'Date'"
+                    [name]="'date'"
+                    [required]="true"
+                    [type]="'date'"
+                    [(ngModel)]="date">
+                </div>
                 @if (isInvalid(date)) {
                     <p id="date-error" class="form__error">Date is required</p>
                 }
             </div>
             <div class="grid__col grid__col3">
-                <label for="game">
-                    <span class="label__text">Game name</span>
-                    <input
-                        required
-                        class="input"
-                        type="text"
-                        id="game"
-                        name="game"
-                        [attr.aria-invalid]="isInvalid(gameName) ? 'true' : null"
-                        [attr.aria-describedby]="isInvalid(gameName) ? 'game-error' : null"
-                        [(ngModel)]="gameName">
-                </label>
+                <div app-input
+                    [errorId]="'game-error'"
+                    [id]="'game'"
+                    [invalid]="isInvalid(gameName)"
+                    [label]="'Game name'"
+                    [name]="'game'"
+                    [required]="true"
+                    [type]="'text'"
+                    [(ngModel)]="gameName">
+                </div>
                 @if (isInvalid(gameName)) {
                     <p id="game-error" class="form__error">Game name is required</p>
                 }
@@ -56,19 +52,18 @@
         <div class="grid grid--gap-m">
             @for (i of playerIndexes; track i) {
                 <div class="grid__col grid__col3">
-                    <label [for]="'add-player' + (i + 1)">
-                        <span class="label__text">Player {{ i + 1 }}</span>
-                        <input
-                            required
-                            class="input"
-                            type="text"
-                            [id]="'add-player' + (i + 1)"
-                            [name]="'add-player' + (i + 1)"
-                            [attr.aria-invalid]="isInvalid(playerNames[i]) ? 'true' : null"
-                            [attr.aria-describedby]="isInvalid(playerNames[i]) ? 'add-player-error' + (i + 1) : null"
-                            [(ngModel)]="playerNames[i]"
-                            (blur)="updateWinnerOptions()">
-                    </label>
+                    <div app-input
+                        [errorId]="'add-player-error' + (i + 1)"
+                        [id]="'add-player' + (i + 1)"
+                        [invalid]="isInvalid(playerNames[i])"
+                        [label]="'Player ' + (i + 1)"
+                        [name]="'add-player' + (i + 1)"
+                        [required]="true"
+                        [type]="'text'"
+                        [(ngModel)]="playerNames[i]"
+                        (blur)="updateWinnerOptions()">
+                    </div>
+
                     @if (isInvalid(playerNames[i])) {
                         <p [id]="'add-player-error' + (i + 1)" class="form__error">Player {{ i + 1 }} name is required</p>
                     }
@@ -77,13 +72,12 @@
         </div>
         <div class="grid grid--gap-m">
             <div class="grid__col grid__col3">
-                <app-select
-                    id="select-winner"
-                    name="select-winner"
-                    label="Winner"
+                <div app-select
+                    [id]="'select-winner'"
+                    [label]="'Winner'"
                     [options]="winnerOptions"
                     [(ngModel)]="winnerName">
-                </app-select>
+                </div>
                 @if (isInvalid(winnerName)) {
                     <p id="winner-error" class="form__error">Winner is required</p>
                 }

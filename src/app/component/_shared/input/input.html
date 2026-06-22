@@ -1,0 +1,14 @@
+<label [for]="id">
+    <span class="label__text">{{ label }}</span>
+    <input
+        class="input"
+        [type]="type"
+        [id]="id"
+        [name]="name"
+        [required]="required || null"
+        [value]="value"
+        [attr.aria-invalid]="invalid ? 'true' : null"
+        [attr.aria-describedby]="invalid && errorId ? errorId : null"
+        (input)="onChange($any($event.target).value); value = $any($event.target).value"
+        (blur)="onBlur()">
+</label>
